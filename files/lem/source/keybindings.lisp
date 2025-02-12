@@ -1,8 +1,8 @@
-;;;; keybindings.lisp
+(defpackage #:lem-config/keybindings
+  (:use #:cl 
+        #:lem))
+(in-package #:lem-config/keybindings)
 
-(uiop:define-package :config/keybindings
-  (:use :cl :lem))
-(in-package :config/keybindings)
 
 ;; Make undo & redo what I am used to
 (defun custom-keybindings ()

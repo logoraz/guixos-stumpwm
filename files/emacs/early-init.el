@@ -11,6 +11,9 @@
 ;; PATHs, Environment & Configuration Variables
 ;;
 
+;; Set the `user-emacs-directory` to a writeable path
+(setq user-emacs-directory "~/.cache/emacs")
+
 ;; Set GUIX packages to Emacs Load Path
 (defvar raz/guix-emacs-packages-path
   (expand-file-name "~/.guix-home/profile/share/emacs/site-lisp/")
@@ -117,10 +120,7 @@
 (setq frame-resize-pixelwise t)
 
 (setq raz/custom-frame-alist
-      '(;;(alpha-background . 85) ; doesn't work on X11
-        ;;(undecorated . t)
-        ;;(maximized . t)
-        (alpha . (85 . 85))
+      '((alpha . (90 . 85))
         (use-frame-synchronization . t)))
 
 (setq initial-frame-alist
@@ -166,11 +166,6 @@
 ;;         systems.
 ;; https://www.reddit.com/r/emacs/comments/jhb2i6/
 ;; guix_the_right_way_to_manage_your_packages/
-
-;; Guix Home PATH (for reference)
-;; (load-file "~/.guix-home/profile/share/emacs/site-lisp/subdirs.el")
-;; For Guix system (for reference) - `use-package' seems to handle this...
-;; (load-file "/run/current-system/profile/share/emacs/site-lisp/subdirs.el")
 
 (require 'package)
 

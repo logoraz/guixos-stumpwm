@@ -2,21 +2,30 @@
   #:use-module (gnu)
   #:use-module (gnu home)
   #:use-module (gnu home services)
-  #:use-module (gnu home services desktop)
+  #:use-module (gnu home services pm)
   #:use-module (gnu home services sound)
   #:use-module (gnu home services shells)
+  #:use-module (gnu home services desktop)
   #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
-  #:use-module (config home services home-impure-symlinks))
+  #:use-module (config home services environment)
+  #:use-module (config home services home-impure-symlinks)
+  #:use-module (config home services xdg-files)
+  #:use-module (config home services mutable-files)
+  #:use-module (config home services streaming)
+  #:use-module (config home services udiskie))
 
+;;TODO: cleanup/organize
 (use-package-modules fonts web-browsers gnuzilla password-utils gnupg mail
                      gstreamer video compton image-viewers linux music
-                     gnucash gimp inkscape graphics compression version-control
-                     guile guile-xyz emacs emacs-xyz sdl compression
-                     ;; added from system
-                     lisp lisp-xyz wm xorg xdisorg freedesktop
+                     gnucash gimp inkscape graphics image gnome gnome-xyz
+                     guile guile-xyz emacs emacs-xyz sdl text-editors
+                     shellutils pdf glib enchant
+                     lisp lisp-xyz lisp-check maths wm
+                     freedesktop kde-frameworks
                      ssh cups suckless networking package-management)
+
 
 ;;; Package Transformations
 (define latest-nyxt
@@ -25,53 +34,111 @@
      (with-latest   . "nyxt"))))
 
 ;;; Packages
-(define guile-packages
-  (list guile-next ;;|--> gnu packages guile
-        guile-ares-rs ;;|--> gnu packages guile-xyz
-        guile-hoot
-        guile-websocket
-        guile-sdl2 ;;|--> gnu package sdl
-        sdl2))
+(define %guile-packages
+  (list guile-next
+        guile-ares-rs))
 
-(define logoraz-packages
-  (list font-hack ;;|--> gnu packages fonts
-        font-jetbrains-mono
+(define %cl-packages
+  (list ccl
+        ecl
+        ;; clasp-cl (??)
+        maxima
+        cl-sketch
+        cl-micros
+        cl-hunchentoot
+        cl-easy-routes
+        cl-djula
+        cl-clack
+        cl-mito
+        cl-transducers
+        cl-autowrap
+        cl-jzon
+        cl-rove
+        cl-serapeum
+        cl-trivial-types
+        cl-closer-mop
+        cl-lparallel))
+
+(define %logoraz-packages
+  (list picom                      ;;|--> StumpWM Tools
+        feh
+        libnotify
+
+        ;; Mail
+        mu
+        isync
+        msmtp
+
+        ;; Flatpak & XDG Utilities
+        flatpak
+        xdg-desktop-portal
+        xdg-desktop-portal-gnome
+        xdg-utils
+        xdg-dbus-proxy
+        shared-mime-info
+        (list glib "bin")
+
+        ;; Appearance
+        matcha-theme
+        papirus-icon-theme
+        adwaita-icon-theme
+        breeze-icons ;; for KDE apps
+        gnome-themes-extra
+        bibata-cursor-theme
+
+        ;; Fonts
         font-fira-code
         font-iosevka-aile
         font-google-noto
         font-google-noto-emoji
         font-google-noto-sans-cjk
-        (latest-nyxt nyxt) ;;|--> gnu packages web-browsers :www-mail
-        icecat             ;;|--> gnu packages gnuzilla
-        keepassxc          ;;|--> gnu packages password-utils
-        gnupg              ;;|--> gnu packages gnupg
-        isync              ;;|--> gnu packages mail
-        msmtp
-        mu
-        gstreamer ;;|--> gnu packages gstreamer
+
+        ;; Browsers
+        (latest-nyxt nyxt)        ;;|--> gnu packages web-browsers :www-mail
+        enchant
+        icecat                    ;;|--> gnu packages gnuzilla
+
+        ;; Editors/IDE's
+        lem
+        sdl2
+
+        ;; Authentication/Encryption
+        gnupg
+        pinentry
+        keepassxc
+        password-store ;; move to password-store eventually...
+
+        ;; Audio devices & Media playback
+        mpv                        ;;|--> gnu packages video
+        mpv-mpris
+        vlc
+        youtube-dl
+        playerctl                  ;;|--> gnu packages music
+        gstreamer
+        gst-plugins-base
         gst-plugins-good
         gst-plugins-bad
+        gst-plugins-ugly
         gst-libav
-        mpv ;;|--> gnu packages video :apps
-        vlc
-        picom    ;;|--> gnu packages compton
-        feh      ;;|--> gnu packages image-viewers
-        pipewire ;;|--> gnu packages linux
-        wireplumber
-        lm-sensors
-        brightnessctl
-        playerctl ;;|--> gnu packages music
-        gnucash   ;;|--> gnu packages gnucash
-        gimp      ;;|--> gnu packages gimp
-        inkscape  ;;|--> gnu packages inkscape
-        blender   ;;|--> gnu packages graphics
-        zip       ;;|--> gnu packages compression
-        unzip
-        git))     ;;|--> gnu packages version-control
 
-(define emacs-packages
-  (list  emacs                    ;;|--> gnu packages emacs
-         emacs-diminish           ;;|--> gnu packages emacs-xyz
+        ;; PDF reader
+        zathura
+        zathura-pdf-mupdf
+
+        ;; Applications
+        gnucash
+        gimp
+        inkscape
+        blender
+
+        ;; Utilities
+        udiskie
+        network-manager-applet
+        trash-cli))
+
+(define %emacs-packages
+  (list  emacs
+         emacs-diminish
          emacs-delight
          emacs-nord-theme
          emacs-doom-themes
@@ -98,146 +165,75 @@
          emacs-mbsync
          emacs-org-superstar
          emacs-org-appear
+         emacs-0x0
          emacs-erc-hl-nicks
          emacs-erc-image
          emacs-emojify))
 
-(define stumpwm-packages
-  (list sbcl-parse-float          ;;|--> gnu packages lisp-xyz
-        sbcl-local-time
-        sbcl-cl-ppcre
-        sbcl-zpng
-        sbcl-salza2
-        sbcl-clx
-        sbcl-zpb-ttf
-        sbcl-cl-vectors
-        sbcl-cl-store
-        sbcl-trivial-features
-        sbcl-global-vars
-        sbcl-trivial-garbage
-        sbcl-bordeaux-threads
-        sbcl-cl-fad
-        sbcl-clx-truetype
-        sbcl-stumpwm-ttf-fonts     ;;|--> gnu packages wm; :stumpwm-contrib/util
-        sbcl-stumpwm-kbd-layouts
-        sbcl-stumpwm-swm-gaps
-        sbcl-stumpwm-globalwindows
-        sbcl-stumpwm-cpu           ;;:stumpwm-contrib/modeline
-        sbcl-stumpwm-mem
-        sbcl-stumpwm-wifi
-        sbcl-stumpwm-battery-portable))
 
-(define x11-util-packages
-  (list font-hack ;;|--> gnu packages fonts
-        font-jetbrains-mono
-        xterm ;;|--> gnu packages xorg
-        transset
-        xhost
-        xset
-        xsetroot
-        xinput
-        xrdb
-        xrandr
-        xclip ;;|--> gnu packages xdisorg
-        xsel
-        xss-lock
-        xdg-utils ;;|--> gnu packages freedesktop
-        blueman   ;;|--> gnu package networking
-        bluez))
+(define %home-base-packages
+  (append %cl-packages
+          %guile-packages
+          %emacs-packages
+          %logoraz-packages))
 
-(define *home-path* "/home/logoraz/dotfiles/")
+;;; home-environment
+(define %gosr (string-append "sudo guix system -L ~/dotfiles/ "
+                             "reconfigure "
+                             "~/dotfiles/config/system/system-config.scm"))
 
+(define %gohr (string-append "guix home -L ~/dotfiles/ "
+                             "reconfigure "
+                             "~/dotfiles/config/home/home-config.scm"))
 
-(define logoraz-home
+(define stumpwm-home
   (home-environment
-   ;; Below is the list of packages that will show up in your
-   ;; Home profile, under ~/.guix-home/profile.
-   (packages (append
-              x11-util-packages
-              stumpwm-packages
-              guile-packages
-              logoraz-packages
-              emacs-packages))
+   (packages %home-base-packages)
 
-   ;; Below is the list of Home services.  To search for available
-   ;; services, run 'guix home search KEYWORD' in a terminal.
    (services
-    (list
-     (service home-pipewire-service-type)
-     (service home-dbus-service-type) ;; for bluetooth --> system
-     (simple-service 'home-impure-symlinks-dotfiles
-                     home-impure-symlinks-service-type
-                     `( ;; guix Configuration Scaffolding
-                       (".config/guix/channels.scm"
-                        ,(string-append
-                          *home-path*
-                          "config/system/channels.scm"))
-                       ;; StumpWM XDG Configuration Scaffolding
-                       (".config/stumpwm/config"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/config.lisp"))
-                       (".config/stumpwm/libraries"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/libraries"))
-                       (".config/stumpwm/modules"
-                        ,(string-append
-                          *home-path*
-                          "files/stumpwm/modules"))
-                       ;; Xorg Configuration Scaffolding
-                       (".Xdefaults"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-Xdefaults"))
-                       (".Xresources"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-Xresources"))
-                       (".icons"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/dot-icons"))
-                       (".config/xorg/start-xterm.sh"
-                        ,(string-append
-                          *home-path*
-                          "files/xorg/start-xterm.sh"))
-                       ;; Emacs Configuration Scaffolding
-                       (".config/emacs"
-                        ,(string-append
-                          *home-path*
-                          "files/emacs"))
-                       ;; Nyxt Configuration Scaffolding
-                       (".config/nyxt"
-                        ,(string-append
-                          *home-path*
-                          "files/nyxt"))
-                       (".local/share/nyxt/extensions"
-                        ,(string-append
-                          *home-path*
-                          "files/nyxt/extensions"))))
-     (simple-service 'env-vars home-environment-variables-service-type
-                     '(("EDITOR" . "emacs")
-                       ("BROWSER" . "nyxt")
-                       ;; ("OPENER" . "opener.sh")
-                       ("XDG_SESSION_TYPE" . "x11")
-                       ("XDG_SESSION_DESKOP" . "stumpwm")
-                       ("XDG_CURRENT_DESKTOP" . "stumpwm")
-                       ;; ("XDG_DOWNLOAD_DIR" . "/home/logoraz/Downloads")
-                       ("GUILE_WARN_DEPRECATED" . "detailed")))
-     (service home-bash-service-type
-              (home-bash-configuration
-               (guix-defaults? #f)
-               (aliases '(("grep" . "grep --color=auto")
-                          ("ls"   . "ls -p --color=auto")
-                          ("ll"   . "ls -l")
-                          ("la"   . "ls -la")))
-               (bashrc
-                (list (local-file "dot-bashrc.sh"
-                                  #:recursive? #t)))
-               (bash-profile
-                (list (local-file "dot-bash_profile.sh"
-                                  #:recursive? #t)))))))))
+    (append (list
+             ;; Enable pipewire audio
+             (service home-pipewire-service-type)
+
+             ;; Enable bluetooth connections to be handled properly
+             ;; bluetooth service only currently available at system level.
+             (service home-dbus-service-type)
+
+             ;; Streaming profile service
+             (service home-streaming-service-type)
+
+             ;; Monitor battery levels
+             (service home-batsignal-service-type)
+
+             ;; Udiskie for auto-mounting
+             (service home-udiskie-service-type)
+
+             ;; XDG local files configuration
+             (service home-xdg-local-files-service-type)
+
+             ;; Mutable Local files symlinks configuration
+             (service home-mutable-files-service-type)
+             
+             ;; Set environment variables for every session
+             (service home-env-vars-configuration-service-type)
+
+             (service home-bash-service-type
+                      (home-bash-configuration
+                       (guix-defaults? #f)
+                       (aliases `(("grep" . "grep --color=auto")
+                                  ("ls"   . "ls -p --color=auto")
+                                  ("ll"   . "ls -l")
+                                  ("la"   . "ls -la")
+                                  ("gosr" . ,%gosr)
+                                  ("gohr" . ,%gohr)))
+                       (bashrc
+                        (list (local-file "dot-bashrc.sh"
+                                          #:recursive? #t)))
+                       (bash-profile
+                        (list (local-file "dot-bash_profile.sh"
+                                          #:recursive? #t))))))
+            %base-home-services))))
+
 
 ;; Enable Home
-logoraz-home
+stumpwm-home

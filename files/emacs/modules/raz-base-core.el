@@ -16,11 +16,6 @@
 ;;; File Settings: Auto Save, Backups, History, Bookmark, and Recent Files.
 
 
-;;; Auto Mode Alist
-;; create `custom' file extension for Xdefaults/Xresources file types...
-;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Associating-modes-with-files.html
-;; (add-to-list 'auto-mode-alist '("\\.xconf\\'" . conf-xdefaults-mode))
-
 ;;; Auto Save: Prefix for generating auto-save-list-file-name
 ;; see - `auto-save-list-file-name'
 (setq auto-save-list-file-prefix (expand-file-name "auto-save/.saves-"
@@ -78,30 +73,37 @@
 
 ;;; Coding/Editing Defaults
 
+;;; Interpreter Mode Alist
+;; (add-to-list 'interpreter-mode-alist '("Lisp" . lisp-mode))
+
 ;; .dir-local variables for development projects
-(setq enable-local-eval nil)
-(setq enable-local-variables nil)
+(setq enable-local-eval t
+      enable-local-variables t)
 
 (set-default-coding-systems 'utf-8)
 (setq-default global-auto-revert-non-file-buffers t)
 (setq-default indent-tabs-mode nil) ; use spaces instead of tabs
-(setq-default ;cursor-type 'bar
-
-              large-file-warning-threshold 100000000
+(setq-default large-file-warning-threshold 100000000
               find-file-visit-truename t)
 (global-auto-revert-mode 1)
 (delete-selection-mode)
 (column-number-mode 1)
 
+(use-package display-line-numbers
+  :hook (lisp-mode . display-line-numbers-mode))
+
 (use-package display-fill-column-indicator
   ;; TODO: Customize theme color for this element -> via ':config' keyword
   :diminish
-  ;; Only activate for lisp-mode -> stumpwm-contrib preference
-  :hook ((lisp-mode . display-fill-column-indicator-mode)
-         (scheme-mode . display-fill-column-indicator-mode))
+  ;; Only activate for lisp-mode
+  :hook (lisp-mode . display-fill-column-indicator-mode)
   :custom
-  (fill-column 94)
-  (display-fill-column-indicator-column fill-column))
+  (fill-column 80)
+  (display-fill-column-indicator-column fill-column)
+  :config
+  ;; Make fill-column-indicator face darker --> line-number face
+  ;; theme value #5c5e5e --> #3f4040 (good with doom-tomorrow-night theme)
+  (raz/set-face-attribute 'fill-column-indicator '(:foreground "#3f4040")))
 
 (defun raz/switch-to-minibuffer ()
   "Switch to minibuffer window."

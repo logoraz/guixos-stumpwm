@@ -14,6 +14,9 @@
 
 (in-package :stumpwm)
 
+
+;;; Set PATHs: modules & data directories, etc.
+
 ;; Define Guix profiles
 (defconstant +guix-system-path+ "/run/current-system/profile/share/"
   "Define Guix System profile PATH.")
@@ -21,29 +24,27 @@
 (defconstant +guix-home-path+ "/home/logoraz/.guix-home/profile/share/"
   "Define Guix Home profile PATH.")
 
-(defconstant +swm-data-dir+ (concat (getenv "XDG_CACHE_HOME")
-                                    "/stumpwm/"))
+(defconstant +xdg-data-home-path+ (concat (getenv "XDG_DATA_HOME") "/") 
+  "Define XDG_DATA_HOME PATH.")
 
-;;; Set PATHs: modules & data directories, etc.
+(defconstant +xdg-cache-home-path+ (concat (getenv "XDG_CACHE_HOME") "/") 
+  "Define XDG_CACHE_HOME PATH.")
 
-;; Set StumpWM modules directory - at system level!
-(set-module-dir (concat +guix-home-path+
+(defconstant +swm-config-source-dir+ (concat (getenv "XDG_CONFIG_HOME")
+                                             "/stumpwm/source/")
+  "Define StumpWM Config Source Directory.")
+
+(defconstant +swm-config-module-dir+ (concat (getenv "XDG_CONFIG_HOME")
+                                             "/stumpwm/modules/")
+  "Define StumpWM Config Modules Directory.")
+
+
+;; Set StumpWM *official* contrib modules directory - at system level!
+(set-module-dir (concat +guix-system-path+
                         "common-lisp/sbcl/"))
 
-;; Set StumpWM data directory
-;; https://stumpwm.github.io/git/stumpwm-git_67.html
-;; Turn's out you can't change creation of `~/.stumpwm.d' as it is hard coded into
-;; stumpwm's initialization process -> created before `load-rc-file', that is, before
-;; the user's config is read in...
-;; Ref: https://github.com/stumpwm/stumpwm/blob/master/stumpwm.lisp#L262
-(defun custom-data-dir ()
-  (merge-pathnames ".cache/stumpwm/" (user-homedir-pathname)))
-
-(defun ensure-custom-data-dir ()
-  (ensure-directories-exist (custom-data-dir) :mode #o700))
-
-(ensure-custom-data-dir)
-(setf *data-dir* (custom-data-dir))
+;;; Add custom modules to StumpWM Load Path:
+(set-module-dir +swm-config-module-dir+)
 
 ;; Set StumpWM as default package
 (setf *default-package* :stumpwm)
@@ -51,35 +52,20 @@
 ;; A startup message can be used when initializing StumpWM, for now set to nil.
 (setf *startup-message* nil)
 
-;; Import asdf-loads
-;; ref: https://www.github.com/aartaka/stumpwm-config
-;; (asdf:load-systems :slynk :swank)
-
-;; TODO: Determine what the value of AltGr key is and then let's set it.
-;; (setf *altgr-offset* 4)
-;; (register-altgr-as-modifier)
-
 ;;; Initialize X11 Desktop Environment & Resources.
-(load "~/.config/stumpwm/modules/auto-start.lisp")
+(load #P"~/.config/stumpwm/source/start-xenv.lisp")
 
-;;; Stumpwm-contrib Packages/Libraries
+;;; Configure the core UIX
+(load #P"~/.config/stumpwm/source/theme.lisp")
+(load #P"~/.config/stumpwm/source/frames.lisp")
+(load #P"~/.config/stumpwm/source/keybindings.lisp")
 
-;;; Load in configuration/custom files
-(load "~/.config/stumpwm/modules/syntax.lisp")
-(load "~/.config/stumpwm/modules/utilities.lisp")
-(load "~/.config/stumpwm/modules/colors.lisp")
-(load "~/.config/stumpwm/modules/theme.lisp")
-(load "~/.config/stumpwm/modules/frames.lisp")
-(load "~/.config/stumpwm/modules/keybindings.lisp")
-(load "~/.config/stumpwm/modules/modeline.lisp")
+;;; Customize mode-line
+(load #P"~/.config/stumpwm/source/modeline.lisp")
 
-;; Start the mode line
-;; TODO: Put in modeline module?
-(when *initializing*
-  (mode-line))
+;;; Utilities & Experimental Feautures
+(load #P"~/.config/stumpwm/source/utilities.lisp")
 
 ;; Notify that everything is ready!
-(setf *startup-message*
-      (concatenate 'string
-                   "^6*Welcome ^Blogoraz^b. "
-                   "Your ^BStumpWM^b session is ready!"))
+(setf *startup-message* (concat "^6*^BGreetings logoraz! "
+                                "Your StumpWM session is ready...^b"))

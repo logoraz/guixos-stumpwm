@@ -1,8 +1,8 @@
-;;;; file-prompt.lisp
+(defpackage #:lem-config/file-prompt
+  (:use #:cl 
+        #:lem))
+(in-package #:lem-config/file-prompt)
 
-(uiop:define-package :config/file-prompt
-  (:use :cl :lem))
-(in-package :config/file-prompt)
 
 (define-key *global-keymap* "C-x C-f" 'fp-find-file)
 
