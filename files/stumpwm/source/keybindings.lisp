@@ -86,6 +86,13 @@
     key-map))
 (define-key *root-map* (kbd "a") '*my-applications-keymap*)
 
+;;; Custom X11 System Controls
+(defvar *my-xorg-keymap*
+  (let ((key-map (make-sparse-keymap)))
+    (define-key key-map (kbd "t") "toggle-trackpad")
+    key-map))
+(define-key *root-map* (kbd "X") '*my-xorg-keymap*)
+
 ;;; Screenshots
 ;; TODO - determine how to preset location for screenshots so I don't have to
 ;; type it in every time. Also, screenshot captures the stumpwm prompt as well...

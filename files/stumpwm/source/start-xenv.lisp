@@ -29,9 +29,26 @@
 (run-shell-command "xset s off")
 
 ;;; Disable Trackpad (set here as default)
-;; TODO: Establish as a command so the user can toggle on/off via StumpWM
-;;       |---> Place in `syntax.lisp'
-(run-shell-command "xinput set-prop 12 185 0")
+(defvar *trackpadp* nil
+  "Hold boolean state of trackpad.")
+
+;; (run-shell-command "xinput set-prop 12 185 0")
+(defvar *trackpad-command* "xinput set-prop 12 185"
+  "Set xinput set-prop specifics to Enable/Disable trackpad...")
+
+(defun set-trackpad-state (&optional (state "0"))
+  "Enable/Disable trackpad."
+  (run-shell-command (concat *trackpad-command*
+                             " "
+                             state)))
+
+(defcommand toggle-trackpad () ()
+  "Toggle trackpad control..."
+  (set-trackpad-state (if *trackpadp* "0" "1"))
+  (setf *trackpadp* (not *trackpadp*)))
+
+;; Always start with trackpad disabled
+(set-trackpad-state)
 
 ;;; UI Settings
 
