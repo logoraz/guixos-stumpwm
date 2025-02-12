@@ -11,10 +11,11 @@
 (defconstant +bold-font+
   #P"/home/logoraz/.local/share/fonts/FiraCodeNerdFontMono-Bold.ttf")
 
-(defvar *opaquep* nil)
+(defvar *opaquep* nil
+  "Hold boolean state of opacity.")
 
 (defun set-opacity (&optional (opacity "0.9"))
-  "Set frame OPACITY (transparency) for X11 systems using transset."
+  "Set frame OPACITY (transparency) for X11 systems (transset)."
   (uiop:run-program (concatenate 'string
                                  "transset -a "
                                  opacity)))
