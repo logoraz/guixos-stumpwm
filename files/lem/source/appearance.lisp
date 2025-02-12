@@ -28,6 +28,7 @@
 (setf *opaquep* (not *opaquep*))
 
 ;; Use FiraCode Nerd fonts
+;; FIX: figure out how to get icon sets display in C-x d
 ;;#+lem-sdl2
 ;; (ignore-errors
 ;;   (let ((font-regular +regular-font+)
