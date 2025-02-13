@@ -45,11 +45,11 @@
 
 (defun bluetooth-message (&rest output)
   "Bluetooth message formatting."
-  (message (format-output (format nil "^2Bluetooth:^7 ~{~a~^ ~}" output))))
+  (message (format-output (format nil "^2Bluetooth:^7 ~{~A~^ ~}" output))))
 
 (defun bluetooth-make-command (&rest args)
   "Make bluetooth command."
-  (format nil "~a ~{~a~^ ~}" *bluetooth-command* args))
+  (format nil "~A ~{~A~^ ~}" *bluetooth-command* args))
 
 (defmacro bluetooth-command (&rest args)
   "Bluetooth command macro."
@@ -65,11 +65,11 @@
             (:constructor make-bluetooth-device-from-command
                 (&key (raw-name "")
                  &aux (address (second (re:split " " raw-name)))
-                   (full-name (format nil "~{~a~^ ~}"
+                   (full-name (format nil "~{~A~^ ~}"
                                       (rest (rest (re:split " " raw-name))))))))
   "Bluetooth device data structure for establishing various methods of conection."
   address
-  (full-name (progn (format nil "~{~a~^ ~}" name))))
+  (full-name (progn (format nil "~{~A~^ ~}" name))))
 
 (defun bluetooth-get-devices ()
   "Documentation"
@@ -87,7 +87,7 @@
                                       (bluetooth-device-address device)))
           ((stringp device) ;; assume it is a MAC address
            (bluetooth-message-command "connect" device))
-          (t (message (format nil "Cannot work with device ~a" device))))))
+          (t (message (format nil "Cannot work with device ~A" device))))))
 
 
 ;;; StumpWM Interface
