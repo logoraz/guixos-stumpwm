@@ -40,10 +40,10 @@
   (run-shell-command (format nil
                              "~A set +~A%"
                              *brightness-command*
-                             *brightness-step*)))
+                             *brightness-step*) t))
 
 (defcommand decrease-brightness () ()
   (run-shell-command (format nil
                              "~A set ~A%-"
                              *brightness-command*
-                             *brightness-step*)))
+                             *brightness-step*) t))
