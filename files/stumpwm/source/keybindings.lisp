@@ -26,7 +26,7 @@
 (load-module "swm-bluetooth")
 (load-module "swm-screenshot")
 (load-module "end-session")
-
+(load-module "swm-brightness")
 
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.
@@ -53,13 +53,12 @@
 (define-key *top-map* (kbd "XF86AudioMicMute") "wpctl-source-toggle-mute")
 
 ;;; Brightness Controls
-;; TODO - Create library for brightness controls (swm-brightnessctl) with moddline
-;;        support.
-;;      - Requires dependency brightnessctl as clarified in library name!
-(define-key *top-map* (kbd "XF86MonBrightnessDown")
-  "exec brightnessctl set 5%-")
 (define-key *top-map* (kbd "XF86MonBrightnessUp")
-  "exec brightnessctl set +5%")
+  "increase-brightness")
+
+(define-key *top-map* (kbd "XF86MonBrightnessDown")
+  "decrease-brightness")
+
 
 ;;; Groups
 (define-key *top-map* (kbd "s-1") "gselect 1")

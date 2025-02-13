@@ -21,16 +21,29 @@
 ;;;
 
 (defpackage #:swm-brightness
-  (:use #:cl #:stumpwm)
-  (:local-nicknames (#:re #:ppcre))
-  (:export #:set-brightness-command))
+  (:use #:cl 
+        #:stumpwm)
+  (:export #:increase-brightness
+           #:decrease-brightness
+           #:*brightness-command*
+           #:*brightness-step*))
 (in-package #:swm-brightness)
 
 
-(defvar *brightness-command* ""
-  "Base command for interacting with bluetooth.")
+(defparameter *brightness-command* "brightnessctl"
+  "Base command for interacting with brightness.")
 
-(defun set-brightness-command (&optional (brightness-command *brightness-command))
-  "Set brightness command, *BRIGHTNESS-COMMAND*, defaults to brightnessctl."
-  (setf *brightness-command* brightness-command))
+(defparameter *brightness-step* 5
+  "String value for brightness steps.")
 
+(defcommand increase-brightness () ()
+  (run-shell-command (format nil
+                             "~A set +~A%"
+                             *brightness-command*
+                             *brightness-step*)))
+
+(defcommand decrease-brightness () ()
+  (run-shell-command (format nil
+                             "~A set ~A%-"
+                             *brightness-command*
+                             *brightness-step*)))
