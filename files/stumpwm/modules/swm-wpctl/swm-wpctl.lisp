@@ -16,29 +16,18 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-(defpackage :swm-wpctl
-  (:use :cl :stumpwm)
-  (:local-nicknames (:re :ppcre)
-                    (:pf :parse-float))
-  (:export #:volume-up
-           #:volume-down
-           #:set-volume
-           #:get-volume
-           #:get-mute
-           #:mute
-           #:unmute
-           #:toggle-mute
-           #:modeline
-           #:ml-bar
-           #:ml-volume
-           #:*default-sink-id*
-           #:*default-source-id*
-           #:*mixer-command*
+(defpackage #:swm-wpctl
+  (:use #:cl
+        #:stumpwm)
+  (:local-nicknames (#:re #:ppcre)
+                    (#:pf #:parse-float))
+  ;; TODO: Do I really need to export all of these?!!!
+  (:export #:*mixer-command*
            #:*wpctl-path*
            #:*step*
            #:*modeline-fmt*
            #:*source-modeline-fmt*))
-(in-package :swm-wpctl)
+(in-package #:swm-wpctl)
 
 
 ;; formatters.
