@@ -4,5 +4,6 @@
   :license "GPLv3"
   :version "0.0.1"
   :serial t
-  :depends-on ("stumpwm")
+  :depends-on ("stumpwm"
+               "cl-ppcre")
   :components ((:file "swm-brightness")))

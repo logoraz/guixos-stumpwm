@@ -23,6 +23,7 @@
 (defpackage #:swm-brightness
   (:use #:cl 
         #:stumpwm)
+  (:local-nicknames (#:re #:ppcre))
   (:export #:increase-brightness
            #:decrease-brightness
            #:*brightness-command*
@@ -36,14 +37,27 @@
 (defparameter *brightness-step* 5
   "String value for brightness steps.")
 
+(defun format-output (value)
+  "Format output string VALUE to remove superflous content."
+  (let* ((regexp "\\((.*?)\\)") ;; captures (#%), etc
+         (filter "[^()]+") ;; Filters captured string to remove parentheses.
+         (match (re:scan-to-strings regexp value))
+         (content (re:scan-to-strings filter match)))
+    content))
+
+;; TODO: Refactor (similar to bluetooth module...
 (defcommand increase-brightness () ()
-  (run-shell-command (format nil
-                             "~A set +~A%"
-                             *brightness-command*
-                             *brightness-step*) t))
+  (format nil "^B^6Brightness: ~A^b" 
+          (format-output
+           (run-shell-command (format nil
+                                      "~A set +~A%"
+                                      *brightness-command*
+                                      *brightness-step*) t))))
 
 (defcommand decrease-brightness () ()
-  (run-shell-command (format nil
-                             "~A set ~A%-"
-                             *brightness-command*
-                             *brightness-step*) t))
+  (format nil "^B^6Brightness: ~A^b"
+          (format-output
+           (run-shell-command (format nil
+                                      "~A set ~A%-"
+                                      *brightness-command*
+                                      *brightness-step*) t))))
