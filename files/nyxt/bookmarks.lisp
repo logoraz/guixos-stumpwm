@@ -1,6 +1,7 @@
 (
 (:url "https://asdf.common-lisp.dev/asdf/index.html" :title "Top (ASDF Manual)" :date "2025-02-05T04:58:34.858008Z" :tags ("Lisp2"))
 (:url "https://atomized.org/blog/2020/07/06/common-lisp-in-practice/" :title "Common Lisp in Practice - Atomized" :date "2025-02-06T14:24:03.149858Z" :tags ("Lisp2"))
+(:url "https://auth.nelnet.studentaid.gov/Account/Login?ReturnUrl=/connect/authorize/callback?response_type=code&client_id=mma&state=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1dosemicolon%252Fdashboard&redirect_uri=https%3A%2F%2Fnelnet.studentaid.gov&scope=openid%20offline_access%20mma.api.read%20mma.api.write&code_challenge=Sg0SHkj4zLwYcAejfrAjQERLnUkRC6TWI5sGOf2KnUg&code_challenge_method=S256&nonce=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1do&nds_client_id=1&nds_application_id=1&pid=_PENDO_T_zS1KjymIZCn" :title "Access Your Account" :date "2025-02-14T13:39:44.300655Z" :tags ("Home"))
 (:url "https://awesome-cl.com/" :title "awesome-cl | A curated list of awesome Common Lisp frameworks, libraries and other shiny stuff." :date "2025-02-09T06:07:34.302091Z" :tags ("Lisp2"))
 (:url "https://codeberg.org/fosskers/cl-transducers" :title "fosskers/cl-transducers: Ergonomic, efficient data processing for Common Lisp. - Codeberg.org" :date "2025-02-10T14:34:50.763161Z" :tags ("Lisp2"))
 (:url "https://common-lisp.net/" :title "Welcome to Common-Lisp.net!" :date "2025-02-03T02:38:08.377384Z" :tags ("Lisp2"))
