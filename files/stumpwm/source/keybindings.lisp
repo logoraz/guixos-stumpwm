@@ -91,7 +91,7 @@
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "t") "toggle-trackpad")
     key-map))
-(define-key *root-map* (kbd "X") '*my-xorg-keymap*)
+(define-key *root-map* (kbd "C-t") '*my-xorg-keymap*)
 
 ;;; Screenshots
 ;; TODO - determine how to preset location for screenshots so I don't have to

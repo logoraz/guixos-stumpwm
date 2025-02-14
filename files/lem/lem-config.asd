@@ -3,14 +3,13 @@
   :license "GPLv3"
   :version "0.0.1"
   :description "Lem Configuration."
-  :serial t
   :depends-on ()
-  :components ((:module "source"
-                :components ((:file "paredit")
-                             (:file "appearance")
-                             (:file "utilities")
-                             (:file "misc")
-                             (:file "completions")
-                             (:file "keybindings")
-                             (:file "file-prompt")
-                             (:file "time-stamp")))))
+  :pathname "source"
+  :serial t
+  :components ((:file "appearance")
+               (:file "paredit")
+               (:file "completions")
+               (:file "keybindings")
+               (:file "file-prompt")
+               (:file "time-stamp")
+               (:file "utilities")))
