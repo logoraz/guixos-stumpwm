@@ -53,6 +53,7 @@
 (define-key *top-map* (kbd "XF86AudioMicMute") "wpctl-source-toggle-mute")
 
 ;;; Brightness Controls
+(setf swm-brightness:*brightness-step* 10)
 (define-key *top-map* (kbd "XF86MonBrightnessUp")
   "increase-brightness")
 

@@ -16,26 +16,20 @@
 ;;; Commentary:
 ;;;
 
-;;; References:
-;;; 1.
-;;;
-
 (defpackage #:swm-brightness
   (:use #:cl 
         #:stumpwm)
   (:local-nicknames (#:re #:ppcre))
-  (:export #:increase-brightness
-           #:decrease-brightness
-           #:*brightness-command*
-           #:*brightness-step*))
+  (:export #:*command*
+           #:*step*))
 (in-package #:swm-brightness)
 
 
-(defparameter *brightness-command* "brightnessctl"
+(defparameter *command* "brightnessctl"
   "Base command for interacting with brightness.")
 
-(defparameter *brightness-step* 5
-  "String value for brightness steps.")
+(defparameter *step* 5
+  "Value for brightness steps.")
 
 (defun format-output (value)
   "Format output string VALUE to remove superflous content."
@@ -51,13 +45,13 @@
           (format-output
            (run-shell-command (format nil
                                       "~A set +~A%"
-                                      *brightness-command*
-                                      *brightness-step*) t))))
+                                      *command*
+                                      *step*) t))))
 
 (defcommand decrease-brightness () ()
   (format nil "^B^6Brightness: ~A^b"
           (format-output
            (run-shell-command (format nil
                                       "~A set ~A%-"
-                                      *brightness-command*
-                                      *brightness-step*) t))))
+                                      *command*
+                                      *step*) t))))

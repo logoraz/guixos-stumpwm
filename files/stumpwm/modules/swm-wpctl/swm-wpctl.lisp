@@ -21,7 +21,6 @@
         #:stumpwm)
   (:local-nicknames (#:re #:ppcre)
                     (#:pf #:parse-float))
-  ;; TODO: Do I really need to export all of these?!!!
   (:export #:*mixer-command*
            #:*wpctl-path*
            #:*step*
