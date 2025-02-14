@@ -120,6 +120,7 @@
         gst-plugins-bad
         gst-plugins-ugly
         gst-libav
+        ;; pavucontrol ??
 
         ;; PDF reader
         zathura

@@ -41,7 +41,7 @@
 
 ;; TODO: Refactor (similar to bluetooth module...
 (defcommand increase-brightness () ()
-  (format nil "^B^6Brightness: ~A^b" 
+  (format nil "Brightness: ~A" 
           (format-output
            (run-shell-command (format nil
                                       "~A set +~A%"
@@ -49,7 +49,7 @@
                                       *step*) t))))
 
 (defcommand decrease-brightness () ()
-  (format nil "^B^6Brightness: ~A^b"
+  (format nil "Brightness: ~A"
           (format-output
            (run-shell-command (format nil
                                       "~A set ~A%-"
