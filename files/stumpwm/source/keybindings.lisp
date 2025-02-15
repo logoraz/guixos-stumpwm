@@ -74,7 +74,7 @@
     (define-key key-map (kbd "e") "exec emacs")
     (define-key key-map (kbd "l") "exec lem")
     (define-key key-map (kbd "x") "exec ~/.config/xorg/start-xterm.sh")
-    (define-key key-map (kbd "n") "exec nyxt")
+    (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt")
     (define-key key-map (kbd "i") "exec icecat")
     (define-key key-map (kbd "k") "exec keepassxc")
     (define-key key-map (kbd "c") "exec gnucash")
@@ -141,7 +141,7 @@
 (define-key *root-map* (kbd "B") '*bluetooth-keymap*)
 
 ;;; Slynk/Swank Server Controls
-(require :micros)
+(asdf:load-systems :slynk :micros)
 
 (defvar *stumpwm-port* 4005
   "Default port to establish a connection to either slynk or micros")

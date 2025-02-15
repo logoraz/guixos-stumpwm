@@ -7,7 +7,8 @@
   #:use-module (guix ci)
   #:use-module (guix transformations)
   #:use-module (nongnu packages linux)
-  #:use-module (nongnu system linux-initrd))
+  #:use-module (nongnu system linux-initrd)
+  #:use-module (config packages stumpwm))
 
 (use-system-modules keyboard nss)
 
@@ -82,9 +83,9 @@
    '((with-latest . "sbcl"))))
 
 (define %stumpwm-packages
-  (list sbcl ;;(latest-sbcl sbcl)
-        stumpwm+slynk
-        sbcl-parse-float           ;;|--> gnu packages lisp-xyz
+  (list sbcl
+        stumpwm-dev+servers ;; custom package
+        sbcl-parse-float ;;|--> gnu packages lisp-xyz
         sbcl-local-time
         sbcl-cl-ppcre
         sbcl-zpng
@@ -100,7 +101,7 @@
         sbcl-cl-fad
         sbcl-clx-truetype
         ;; stumpwm-contrib packages
-        sbcl-stumpwm-ttf-fonts     ;;|--> gnu packages wm;
+        sbcl-stumpwm-ttf-fonts ;;|--> gnu packages wm;
         sbcl-stumpwm-kbd-layouts
         sbcl-stumpwm-swm-gaps
         sbcl-stumpwm-globalwindows

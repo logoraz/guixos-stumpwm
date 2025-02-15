@@ -21,7 +21,7 @@
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics image gnome gnome-xyz
                      guile guile-xyz emacs emacs-xyz sdl text-editors
-                     shellutils pdf glib enchant
+                     shellutils pdf glib enchant pulseaudio webkit
                      lisp lisp-xyz lisp-check maths wm
                      freedesktop kde-frameworks
                      ssh cups suckless networking package-management)
@@ -44,7 +44,6 @@
         ;; clasp-cl (??)
         maxima
         cl-sketch
-        cl-micros
         cl-hunchentoot
         cl-easy-routes
         cl-djula
@@ -94,9 +93,10 @@
         font-google-noto-sans-cjk
 
         ;; Browsers
-        (latest-nyxt nyxt)        ;;|--> gnu packages web-browsers :www-mail
+        ;; Install Nyxt via flatpak -> https://flathub.org/oc/setup/GNU%20Guix
+        ;; (latest-nyxt nyxt)           ;;|--> gnu packages web-browsers :www-mail
         enchant
-        icecat                    ;;|--> gnu packages gnuzilla
+        icecat                       ;;|--> gnu packages gnuzilla
 
         ;; Editors/IDE's
         lem
@@ -120,7 +120,7 @@
         gst-plugins-bad
         gst-plugins-ugly
         gst-libav
-        ;; pavucontrol ??
+        pavucontrol
 
         ;; PDF reader
         zathura
