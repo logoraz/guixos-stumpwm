@@ -1,13 +1,15 @@
 # Main
 
+# StumpWM
+files/stumpwm.log*
+
 # Emacs
-/files/emacs/etc/
-/files/emacs/var/
-/files/emacs/elisp/
+files/emacs/etc/
+files/emacs/var/
 
 # Lem
-/files/lem/history/
-/files/lem/config.lisp
+files/lem/history/
+files/lem/config.lisp
 
 # Nyxt
-#/files/extensions/tbd
+files/extensions/tbd
