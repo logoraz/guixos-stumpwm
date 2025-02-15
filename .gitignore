@@ -1,7 +1,7 @@
 # Main
 
 # StumpWM
-files/stumpwm.log*
+files/stumpwm/stumpwm.log*
 
 # Emacs
 files/emacs/etc/

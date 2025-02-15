@@ -50,7 +50,7 @@
   (swm-gaps:toggle-gaps))
 
 ;; Window Stylization Parameters
-(setf *maxsize-border-width       2
+(setf *maxsize-border-width*      2
       *normal-border-width*       2
       *float-window-border*       2
       *float-window-title-height* 15
@@ -75,7 +75,7 @@
       *message-window-y-margin*  30
       *message-window-padding*   10
       *message-window-y-padding* 10
-      *message-window-gravity    :top-right)
+      *message-window-gravity*   :top-right)
 
 
 ;;; Mouse focus/float window settings

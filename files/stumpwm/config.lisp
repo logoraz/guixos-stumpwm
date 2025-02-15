@@ -38,6 +38,13 @@
                                              "/stumpwm/modules/")
   "Define StumpWM Config Modules Directory.")
 
+;;; Debugging Logs
+;; See stumpwm/primitives.lisp
+(setf *data-dir* (concat +xdg-cache-home-path+ "stumpwm/"))
+(ensure-data-dir)
+
+(setf *debug-level* 5)
+(redirect-all-output (data-dir-file "debug-output" "txt"))
 
 ;; Set StumpWM *official* contrib modules directory - at system level!
 (set-module-dir (concat +guix-system-path+
