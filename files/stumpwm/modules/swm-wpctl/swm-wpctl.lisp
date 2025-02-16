@@ -16,17 +16,17 @@
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-(defpackage #:swm-wpctl
-  (:use #:cl
-        #:stumpwm)
-  (:local-nicknames (#:re #:ppcre)
-                    (#:pf #:parse-float))
+(defpackage :swm-wpctl
+  (:use :cl
+        :stumpwm)
+  (:local-nicknames (:re :ppcre)
+                    (:pf :parse-float))
   (:export #:*mixer-command*
            #:*wpctl-path*
            #:*step*
            #:*modeline-fmt*
            #:*source-modeline-fmt*))
-(in-package #:swm-wpctl)
+(in-package :swm-wpctl)
 
 
 ;; formatters.

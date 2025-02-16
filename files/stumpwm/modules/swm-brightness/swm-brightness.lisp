@@ -16,13 +16,13 @@
 ;;; Commentary:
 ;;;
 
-(defpackage #:swm-brightness
-  (:use #:cl 
-        #:stumpwm)
-  (:local-nicknames (#:re #:ppcre))
+(defpackage :swm-brightness
+  (:use :cl 
+        :stumpwm)
+  (:local-nicknames (:re :ppcre))
   (:export #:*command*
            #:*step*))
-(in-package #:swm-brightness)
+(in-package :swm-brightness)
 
 
 (defparameter *command* "brightnessctl"

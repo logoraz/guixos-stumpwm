@@ -28,11 +28,11 @@
 ;;;
 
 
-(defpackage #:end-session
-  (:use #:cl
-        #:stumpwm)
+(defpackage :end-session
+  (:use :cl
+        :stumpwm)
   (:export #:*end-session-command*))
-(in-package #:end-session)
+(in-package :end-session)
 
 (defvar *end-session-command* "systemctl")
 
