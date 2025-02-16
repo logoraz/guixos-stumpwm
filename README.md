@@ -1,7 +1,7 @@
 # GuixOS (System + Home) StumpWM Configuration
 
 GuixOS StumpWM ("Crystallized Momentum"): A Custom Guix System Distribution configured
-for StumpWM.
+for StumpWM (Batteries Included).
 Riding out the wave of X11, until [StumpWM/Mahogany](https://github.com/stumpwm/mahogany)
 is ready for use!
 
@@ -24,7 +24,7 @@ Laptop.
 
 ## Project Scaffolding
 
-```scm
+```lisp
     dotfiles/                                ;; Project Root
     |- config/
        |- home/                              ;; GuixOS Home Config Root
@@ -58,9 +58,22 @@ Laptop.
        |- lem/...
        |- nyxt/...                           ;; New!! Nyxt Config
        |- stumpwm/                           ;; StumpWM Config
-          |- config
+          |- config.lisp
           |- source/
-          |- modules/
+             |- start-xenv.lisp
+             |- syntax.lisp
+             |- theme.lisp
+             |- frames.lisp
+             |- keybindings.lisp
+             |- modeline.lisp
+             |- utilities.lisp
+          |- library/
+             |- end-session/
+             |- swm-bluetooth/
+             |- swm-brightness/
+             |- swm-screenshot/
+             |- swm-wpctl/
+             |- wip-swm-nmctl/
        |- xorg/...
        |- zathura/...                        ;; tbd
 ```

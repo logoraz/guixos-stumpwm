@@ -34,9 +34,9 @@
                                              "/stumpwm/source/")
   "Define StumpWM Config Source Directory.")
 
-(defconstant +swm-config-module-dir+ (concat (getenv "XDG_CONFIG_HOME")
-                                             "/stumpwm/modules/")
-  "Define StumpWM Config Modules Directory.")
+(defconstant +swm-config-library-dir+ (concat (getenv "XDG_CONFIG_HOME")
+                                              "/stumpwm/library/")
+  "Define StumpWM Config Module Library Directory.")
 
 ;;; Debugging Logs
 ;; See stumpwm/primitives.lisp
@@ -51,7 +51,7 @@
                         "common-lisp/sbcl/"))
 
 ;;; Add custom modules to StumpWM Load Path:
-(set-module-dir +swm-config-module-dir+)
+(set-module-dir +swm-config-library-dir+)
 
 ;; Set StumpWM as default package
 (setf *default-package* :stumpwm)
@@ -61,6 +61,9 @@
 
 ;;; Initialize X11 Desktop Environment & Resources.
 (load #P"~/.config/stumpwm/source/start-xenv.lisp")
+
+;;; Helper Functions & Macros
+;; (load #P"~/.config/stumpwm/source/syntax.lisp")
 
 ;;; Configure the core UIX
 (load #P"~/.config/stumpwm/source/theme.lisp")

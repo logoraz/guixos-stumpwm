@@ -30,10 +30,10 @@
        *home-path*
        "files/stumpwm/config.lisp"))
 
-    (".config/stumpwm/modules"
+    (".config/stumpwm/library"
      ,(string-append
        *home-path*
-       "files/stumpwm/modules"))
+       "files/stumpwm/library"))
 
     (".config/stumpwm/source"
      ,(string-append
