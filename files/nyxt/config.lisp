@@ -6,12 +6,15 @@
 ;;; References
 ;;; 1. https://github.com/aartaka/nyxt-config/
 
-
+;;; Nyxt as a FlatPak on Guix
+;;; 1. flatpak override --user --filesystem=/run/current-system/profile:ro
+;;;    --filesystem=/gnu/store:ro engineer.atlas.Nyxt
+;;;
 (in-package :nyxt-user)
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
-;;; everywhere... Doesn't seem to be needed anymore...
-;; #+(or nyxt-3 nyxt-4) (reset-asdf-registries)
+;;; everywhere...
+#+(or nyxt-3 nyxt-4) (reset-asdf-registries)
 
 (define-configuration buffer
   ((default-modes `(emacs-mode ,@%slot-value%))))

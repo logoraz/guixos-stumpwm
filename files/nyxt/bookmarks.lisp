@@ -1,7 +1,7 @@
 (
 (:url "https://asdf.common-lisp.dev/asdf/index.html" :title "Top (ASDF Manual)" :date "2025-02-05T04:58:34.858008Z" :tags ("Lisp2"))
 (:url "https://atomized.org/blog/2020/07/06/common-lisp-in-practice/" :title "Common Lisp in Practice - Atomized" :date "2025-02-06T14:24:03.149858Z" :tags ("Lisp2"))
-(:url "https://auth.nelnet.studentaid.gov/Account/Login?ReturnUrl=/connect/authorize/callback?response_type=code&client_id=mma&state=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1dosemicolon%252Fdashboard&redirect_uri=https%3A%2F%2Fnelnet.studentaid.gov&scope=openid%20offline_access%20mma.api.read%20mma.api.write&code_challenge=Sg0SHkj4zLwYcAejfrAjQERLnUkRC6TWI5sGOf2KnUg&code_challenge_method=S256&nonce=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1do&nds_client_id=1&nds_application_id=1&pid=_PENDO_T_zS1KjymIZCn" :title "Access Your Account" :date "2025-02-14T13:39:44.300655Z" :tags ("Home"))
+(:url "https://auth.nelnet.studentaid.gov/Account/Login?ReturnUrl=/connect/authorize/callback?response_type=code&client_id=mma&state=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1dosemicolon%2Fdashboard&redirect_uri=https://nelnet.studentaid.gov&scope=openid%20offline_access%20mma.api.read%20mma.api.write&code_challenge=Sg0SHkj4zLwYcAejfrAjQERLnUkRC6TWI5sGOf2KnUg&code_challenge_method=S256&nonce=bERpWjluZjJjREhIUXN6aXhPMzZsSnhTVXIyYUt4aTc4QkczLXEzNHloV1do&nds_client_id=1&nds_application_id=1&pid=_PENDO_T_zS1KjymIZCn" :title "Access Your Account" :date "2025-02-14T13:39:44.300655Z" :tags ("Home"))
 (:url "https://awesome-cl.com/" :title "awesome-cl | A curated list of awesome Common Lisp frameworks, libraries and other shiny stuff." :date "2025-02-09T06:07:34.302091Z" :tags ("Lisp2"))
 (:url "https://codeberg.org/fosskers/cl-transducers" :title "fosskers/cl-transducers: Ergonomic, efficient data processing for Common Lisp. - Codeberg.org" :date "2025-02-10T14:34:50.763161Z" :tags ("Lisp2"))
 (:url "https://common-lisp.net/" :title "Welcome to Common-Lisp.net!" :date "2025-02-03T02:38:08.377384Z" :tags ("Lisp2"))
@@ -20,6 +20,7 @@
 (:url "https://guix.gnu.org/cookbook/en/html_node/Software-Development.html" :title "Software Development (GNU Guix Cookbook)" :date "2024-07-27T23:50:07.263023Z" :tags ("Guix"))
 (:url "https://issues.guix.gnu.org/" :title "Guix issue tracker" :date "2024-08-11T15:47:51.773885Z" :tags ("Guix"))
 (:url "https://iterate.common-lisp.dev/doc/Don_0027t-Loop-Iterate.html#Don_0027t-Loop-Iterate" :title "Don't Loop Iterate - The Iterate Manual" :date "2025-02-09T23:28:41.391768Z" :tags ("Lisp2"))
+(:url "https://lepiller.eu/en/how-to-fix-the-issue-with-ca-certificates-in-guix.html" :title "How to fix the issue with CA certificates in Guix — Julien Lepiller" :date "2025-02-16T00:26:06.029196Z" :tags ("software"))
 (:url "https://lisp-lang.org/style-guide/#variables" :title "Common Lisp Style Guide | Common Lisp" :date "2025-02-10T03:22:15.774113Z" :tags ("Lisp2"))
 (:url "https://lispcookbook.github.io/cl-cookbook/" :title "The Common Lisp Cookbook" :date "2025-02-01T05:51:06.673905Z" :tags ("Lisp2"))
 (:url "https://lispcookbook.github.io/cl-cookbook/testing.html" :title "Testing the code" :date "2025-02-08T02:46:06.289047Z" :tags ("Lisp2"))
