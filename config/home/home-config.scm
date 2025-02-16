@@ -17,167 +17,173 @@
   #:use-module (config home services udiskie))
 
 ;;TODO: cleanup/organize
-(use-package-modules fonts web-browsers gnuzilla password-utils gnupg mail
+(use-package-modules fonts web-browsers password-utils gnupg mail
                      gstreamer video compton image-viewers linux music
                      gnucash gimp inkscape graphics image gnome gnome-xyz
                      guile guile-xyz emacs emacs-xyz sdl text-editors
-                     shellutils pdf glib enchant pulseaudio webkit
+                     shellutils pdf glib enchant pulseaudio
                      lisp lisp-xyz lisp-check maths wm
                      freedesktop kde-frameworks
                      ssh cups suckless networking package-management)
 
 
 ;;; Package Transformations
-(define latest-nyxt
-  (options->transformation
-   '((without-tests . "nyxt")
-     (with-latest   . "nyxt"))))
+;; (define latest-nyxt
+;;   (options->transformation
+;;    '((without-tests . "nyxt")
+;;      (with-latest   . "nyxt"))))
 
 ;;; Packages
 (define %guile-packages
-  (list guile-next
-        guile-ares-rs))
+  (list
+   guile-next
+   guile-ares-rs))
 
 (define %cl-packages
-  (list ccl
-        ecl
-        ;; clasp-cl (??)
-        maxima
-        cl-sketch
-        cl-hunchentoot
-        cl-easy-routes
-        cl-djula
-        cl-clack
-        cl-mito
-        cl-transducers
-        cl-autowrap
-        cl-jzon
-        cl-rove
-        cl-serapeum
-        cl-trivial-types
-        cl-closer-mop
-        cl-lparallel))
+  (list
+   ccl
+   ecl
+   ;; clasp-cl (??)
+   maxima
+   cl-sketch
+   cl-hunchentoot
+   cl-easy-routes
+   cl-djula
+   cl-clack
+   cl-mito
+   cl-transducers
+   cl-autowrap
+   cl-jzon
+   cl-rove
+   cl-serapeum
+   cl-trivial-types
+   cl-closer-mop
+   cl-lparallel))
 
 (define %logoraz-packages
-  (list picom                      ;;|--> StumpWM Tools
-        feh
-        libnotify
+  (list
+   ;; StumpWM Utilities
+   picom
+   feh
+   libnotify
 
-        ;; Mail
-        mu
-        isync
-        msmtp
+   ;; Mail
+   mu
+   isync
+   msmtp
 
-        ;; Flatpak & XDG Utilities
-        flatpak
-        xdg-desktop-portal
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
-        xdg-utils
-        xdg-dbus-proxy
-        shared-mime-info
-        (list glib "bin")
+   ;; Flatpak & XDG Utilities
+   flatpak
+   xdg-desktop-portal
+   xdg-desktop-portal-gtk
+   xdg-desktop-portal-kde
+   xdg-desktop-portal-gnome
+   xdg-utils
+   xdg-dbus-proxy
+   shared-mime-info
+   (list glib "bin")
 
-        ;; Appearance
-        matcha-theme
-        papirus-icon-theme
-        adwaita-icon-theme
-        breeze-icons ;; for KDE apps
-        gnome-themes-extra
-        bibata-cursor-theme
+   ;; Appearance
+   matcha-theme
+   papirus-icon-theme
+   adwaita-icon-theme
+   breeze-icons ;; for KDE apps
+   gnome-themes-extra
+   bibata-cursor-theme
 
-        ;; Fonts
-        font-fira-code
-        font-iosevka-aile
-        font-google-noto
-        font-google-noto-emoji
-        font-google-noto-sans-cjk
+   ;; Fonts
+   font-fira-code
+   font-iosevka-aile
+   font-google-noto
+   font-google-noto-emoji
+   font-google-noto-sans-cjk
 
-        ;; Browsers
-        ;; Install Nyxt via flatpak -> https://flathub.org/oc/setup/GNU%20Guix
-        ;; (latest-nyxt nyxt)           ;;|--> gnu packages web-browsers :www-mail
-        enchant
-        icecat                       ;;|--> gnu packages gnuzilla
+   ;; Browsers & Tools
+   ;; Using flatpak -> https://flathub.org/oc/setup/GNU%20Guix
+   ;; (latest-nyxt nyxt)
+   enchant
 
-        ;; Editors/IDE's
-        lem
-        sdl2
+   ;; Editors/IDE's
+   lem
+   sdl2
 
-        ;; Authentication/Encryption
-        gnupg
-        pinentry
-        keepassxc
-        password-store ;; move to password-store eventually...
+   ;; Authentication/Encryption
+   gnupg
+   pinentry
+   keepassxc
+   password-store ;; move to password-store eventually...
 
-        ;; Audio devices & Media playback
-        mpv                        ;;|--> gnu packages video
-        mpv-mpris
-        vlc
-        youtube-dl
-        playerctl                  ;;|--> gnu packages music
-        gstreamer
-        gst-plugins-base
-        gst-plugins-good
-        gst-plugins-bad
-        gst-plugins-ugly
-        gst-libav
-        pavucontrol
+   ;; Audio devices & Media playback
+   mpv                        ;;|--> gnu packages video
+   mpv-mpris
+   vlc
+   youtube-dl
+   playerctl                  ;;|--> gnu packages music
+   gstreamer
+   gst-plugins-base
+   gst-plugins-good
+   gst-plugins-bad
+   gst-plugins-ugly
+   gst-libav
+   pavucontrol
 
-        ;; PDF reader
-        zathura
-        zathura-pdf-mupdf
+   ;; PDF reader
+   zathura
+   zathura-pdf-mupdf
 
-        ;; Applications
-        gnucash
-        gimp
-        inkscape
-        blender
+   ;; Applications
+   gnucash
+   gimp
+   inkscape
+   blender
 
-        ;; Utilities
-        udiskie
-        network-manager-applet
-        trash-cli))
+   ;; Utilities
+   udiskie
+   network-manager-applet
+   trash-cli))
 
 (define %emacs-packages
-  (list  emacs
-         emacs-diminish
-         emacs-delight
-         emacs-nord-theme
-         emacs-doom-themes
-         emacs-nerd-icons
-         emacs-doom-modeline
-         emacs-ligature
-         emacs-no-littering
-         emacs-ws-butler
-         emacs-undo-tree
-         emacs-paredit
-         emacs-visual-fill-column
-         emacs-ace-window
-         emacs-mct
-         emacs-orderless
-         emacs-corfu
-         emacs-marginalia
-         emacs-beframe
-         emacs-denote
-         emacs-magit
-         emacs-vterm
-         emacs-guix
-         emacs-arei
-         emacs-sly
-         emacs-mbsync
-         emacs-org-superstar
-         emacs-org-appear
-         emacs-0x0
-         emacs-erc-hl-nicks
-         emacs-erc-image
-         emacs-emojify))
+  (list
+   emacs
+   emacs-diminish
+   emacs-delight
+   emacs-nord-theme
+   emacs-doom-themes
+   emacs-nerd-icons
+   emacs-doom-modeline
+   emacs-ligature
+   emacs-no-littering
+   emacs-ws-butler
+   emacs-undo-tree
+   emacs-paredit
+   emacs-visual-fill-column
+   emacs-ace-window
+   emacs-mct
+   emacs-orderless
+   emacs-corfu
+   emacs-marginalia
+   emacs-beframe
+   emacs-denote
+   emacs-magit
+   emacs-vterm
+   emacs-guix
+   emacs-arei
+   emacs-sly
+   emacs-mbsync
+   emacs-org-superstar
+   emacs-org-appear
+   emacs-0x0
+   emacs-erc-hl-nicks
+   emacs-erc-image
+   emacs-emojify))
 
 
 (define %home-base-packages
-  (append %cl-packages
-          %guile-packages
-          %emacs-packages
-          %logoraz-packages))
+  (append
+   %cl-packages
+   %guile-packages
+   %emacs-packages
+   %logoraz-packages))
 
 ;;; home-environment
 (define %gosr (string-append "sudo guix system -L ~/dotfiles/ "

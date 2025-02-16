@@ -14,10 +14,16 @@
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
 ;;; everywhere...
-#+(or nyxt-3 nyxt-4) (reset-asdf-registries)
+(reset-asdf-registries)
+
+;; Load init source files.
+;; (let ((asdf:*central-registry*
+;;         (append (list #P"~/.local/share/common-lisp/source/")
+;;                 asdf:*central-registry*)))
+;;   (asdf:load-system :micros))
 
 (define-configuration buffer
-  ((default-modes `(emacs-mode ,@%slot-value%))))
+    ((default-modes `(emacs-mode ,@%slot-value%))))
 
 ;; Loading files from the same directory (~/.config/nyxt/).
 (define-nyxt-user-system-and-load nyxt-user/basic-config

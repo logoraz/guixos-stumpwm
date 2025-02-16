@@ -22,7 +22,7 @@
 
 ;;; Set pointer/cursor paths & defaults -> theme set in .Xresources
 ;; Ref |--> https://github.com/ful1e5/XCursor-pro
-(run-shell-command "xsetroot -xcf ~/.icons/XCursor-Pro-Dark/cursors/left_ptr 22")
+(run-shell-command "xsetroot -xcf ~/.icons/XCursor-Pro-Dark/cursors/left_ptr 16")
 
 ;;; Turn off system bell & screen-saver control
 (run-shell-command "xset b off")

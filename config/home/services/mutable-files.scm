@@ -61,6 +61,12 @@
        *home-path*
        "files/xorg/start-xterm.sh"))
 
+    ;; Redundant... to .icons above -> needed for zen browser (flatpak)
+    (".local/share/icons"
+     ,(string-append
+       *home-path*
+       "files/xorg/dot-icons"))
+
     (".local/share/fonts/SymbolsNerdFontMono-Regular.ttf"
      ,(string-append
        *home-path*

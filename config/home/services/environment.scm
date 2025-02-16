@@ -27,13 +27,15 @@
     ("VISUAL" . "emacs")
 
     ;; Set quotebrowser as the default
-    ("BROWSER" . "nyxt")
+    ("BROWSER" . "zen")
 
     ;; Set GnuPG Config Dir env
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
 
-    ;; GTK Theme
+    ;; GTK & Xorg
     ("GTK_THEME" . "Adwaita:dark")
+    ("XCURSOR_THEME" . "XCursor-Pro-Dark")
+    ("XCURSOR_SIZE" . "16")
 
     ;; Set XDG environment variables
     ("XDG_SESSION_TYPE" . "x11")
