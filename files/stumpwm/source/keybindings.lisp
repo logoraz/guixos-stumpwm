@@ -74,7 +74,7 @@
     (define-key key-map (kbd "e") "exec emacs")
     (define-key key-map (kbd "l") "exec lem")
     (define-key key-map (kbd "x") "exec ~/.config/xorg/start-xterm.sh")
-    (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt-Electron")
+    (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt")
     (define-key key-map (kbd "i") "exec icecat")
     (define-key key-map (kbd "k") "exec keepassxc")
     (define-key key-map (kbd "c") "exec gnucash")
