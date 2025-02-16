@@ -17,9 +17,12 @@
 
 ;;; Set PATHs: modules & data directories, etc.
 
+;;; TODO: clean up and follow better practice for these...
+;;; i.e. something similar to what is employed in StumpWM/primitives.lisp
+
 ;; Define Guix profiles
 (defconstant +guix-system-path+ "/run/current-system/profile/share/"
-  "Define Guix System profile PATH.")
+             "Define Guix System profile PATH.")
 
 (defconstant +guix-home-path+ "/home/logoraz/.guix-home/profile/share/"
   "Define Guix Home profile PATH.")
@@ -59,11 +62,12 @@
 ;; A startup message can be used when initializing StumpWM, for now set to nil.
 (setf *startup-message* nil)
 
-;;; Initialize X11 Desktop Environment & Resources.
-(load #P"~/.config/stumpwm/source/start-xenv.lisp")
 
 ;;; Helper Functions & Macros
 ;; (load #P"~/.config/stumpwm/source/syntax.lisp")
+
+;;; Initialize X11 Desktop Environment & Resources.
+(load #P"~/.config/stumpwm/source/start-xenv.lisp")
 
 ;;; Configure the core UIX
 (load #P"~/.config/stumpwm/source/theme.lisp")
