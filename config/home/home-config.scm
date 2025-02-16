@@ -71,6 +71,7 @@
         ;; Flatpak & XDG Utilities
         flatpak
         xdg-desktop-portal
+        xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome
         xdg-utils
         xdg-dbus-proxy
