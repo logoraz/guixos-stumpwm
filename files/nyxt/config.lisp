@@ -16,12 +16,6 @@
 ;;; everywhere...
 (reset-asdf-registries)
 
-;; Load init source files.
-;; (let ((asdf:*central-registry*
-;;         (append (list #P"~/.local/share/common-lisp/source/")
-;;                 asdf:*central-registry*)))
-;;   (asdf:load-system :micros))
-
 (define-configuration buffer
     ((default-modes `(emacs-mode ,@%slot-value%))))
 
@@ -45,8 +39,8 @@ loads."
      :depends-on (,system) ,@(when file `(:components (,file)))))
 
 (defextsystem :nx-invader-2)
-(defextsystem :nx-micros)
 (defextsystem :nx-code)
+(defextsystem :nx-micros)
 
 
 ;;; Hacks
