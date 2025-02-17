@@ -14,9 +14,43 @@
 ;; GUILE_LOAD_PATH=$GUIX_ENVIRONMENT/share/guile/site/3.0`
 
 ;; Code:
+;; TODO: ADD support for geiser
+;; Note form djeis
+;; You can get a geiser session that has all the guix stuff by having it run guix repl as
+;; your guile or by running guix repl --listen=unix:///some/path and then using
+;; M-x geiser-connect-local
+;; look into (guix monad-repl)
+
+;; Set default to guile.
+(customize-set-variable 'scheme-program-name "guile")
+
+;; Guix install of `emacs-guix' comes with:
+;; emacs-bui, emacs-dash, emacs-edit-indirect,
+;; emacs-geiser, emacs-geiser-guile, emacs-magit-popup
+;; module-import-compiled
+(use-package guix
+  :config
+  (setq geiser-mode-auto-p nil))
+
+
+(use-package geiser
+  :custom
+  (geiser-default-implementation 'guile)
+  (geiser-active-implementations '(guile))
+  (geiser-implementations-alist '(((regexp "\\.scm$") guile)))
+  (geiser-mode-auto-p t)
+  (geiser-mode-autodoc-p t)
+  (geiser-repl-per-project-p t))
+
+(use-package geiser-guile
+  :config
+  ;; (add-to-list 'geiser-guile-load-path "~/Work/ref/guix")
+  )
+
+
+;;; Experimental IDE for Guile
 
 (use-package arei
-  :if (eq system-type 'gnu/linux)
   ;; :hook ((scheme-mode . raz/start-guile-ares))
   :config
   (setq geiser-mode-auto-p nil)
@@ -49,23 +83,13 @@
   ;; Pass as hook to `use-package'
   (defun raz/arei-auto-connect-nrepl ()
     (unless *raz/ares-rs-process*
-      (save-excursion (sesman-start)))))
-
-(use-package sesman
-  :if (eq system-type 'gnu/linux))
-
-
-;; Guix install of `emacs-guix' comes with:
-;; emacs-bui, emacs-dash, emacs-edit-indirect,
-;; emacs-geiser, emacs-geiser-guile, emacs-magit-popup
-;; module-import-compiled
-(use-package guix
-  :if (eq system-type 'gnu/linux)
-  :config
-  (setq geiser-mode-auto-p nil))
+      (save-excursion (sesman-start))))
 
 
-
+  ) ;; Guile area IDE still a WIP...
+
+(use-package sesman)
+
 
 
 (provide 'raz-guile-ide)
