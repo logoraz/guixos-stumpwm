@@ -1,8 +1,8 @@
 # GuixOS (System + Home) StumpWM Configuration
 
 GuixOS StumpWM ("Crystallized Momentum"): A Custom Guix System Distribution configured
-for StumpWM (Batteries Included).
-Riding out the wave of X11, until [StumpWM/Mahogany](https://github.com/stumpwm/mahogany)
+for StumpWM (Batteries Included). I'm riding out the last wave of X11 until
+[StumpWM/Mahogany](https://github.com/stumpwm/mahogany)
 is ready for use!
 
 <p align="center">
@@ -19,8 +19,6 @@ Laptop.
 
 ![View 2](files/assets/screenshots/guixos-stumpwm_2.png)
 
-![View 3](files/assets/screenshots/guixos-stumpwm_3.png)
-
 
 ## Project Scaffolding
 
@@ -31,6 +29,8 @@ Laptop.
           |- home-config.scm                 ;; ** GuixOS StumpWM Home Config **
           |- dot-bash_profile.sh
           |- dot-bashrc.sh
+          |- devtools-manifest.scm
+          |- org-docs-manifest.scm
           |- services/                       ;; Home Service Modules
              |- environment.scm
              |- home-impure-symlinks.scm
@@ -40,8 +40,8 @@ Laptop.
              |- xdg-files.scm
        |- packages/                          ;; Custom GuixOS Package Modules
           |- video.scm
-          |- devtools-manifest.scm
-          |- org-docs-manifest.scm
+          |- stumpwm.scm                     ;; to get master branch/dev version
+          |- clasp.scm                       ;; WIP (trying n help folks finish this)
        |- services/                          ;; Custom GuixOS Service Modules
           |- tbd
        |- system/                            ;; GuixOS Config Root
@@ -56,12 +56,12 @@ Laptop.
        |- msmtp/...
        |- emacs/...
        |- lem/...
-       |- nyxt/...                           ;; New!! Nyxt Config
-       |- stumpwm/                           ;; StumpWM Config
+       |- nyxt/...
+       |- stumpwm/
           |- config.lisp
           |- source/
-             |- start-xenv.lisp
              |- syntax.lisp
+             |- start-xenv.lisp
              |- theme.lisp
              |- frames.lisp
              |- keybindings.lisp
@@ -75,7 +75,7 @@ Laptop.
              |- swm-wpctl/
              |- wip-swm-nmctl/
        |- xorg/...
-       |- zathura/...                        ;; tbd
+       |- zathura/...
 ```
 
 
