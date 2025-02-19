@@ -1,9 +1,9 @@
-(defpackage #:lem-config/appearance
-  (:use #:cl 
-        #:lem)
+(defpackage :lem-config/appearance
+  (:use :cl 
+        :lem)
   (:export #:set-opacity
            #:toggle-opacity))
-(in-package #:lem-config/appearance)
+(in-package :lem-config/appearance)
 
 (defconstant +regular-font+
   #P"/home/logoraz/.local/share/fonts/FiraCodeNerdFontMono-Regular.ttf")

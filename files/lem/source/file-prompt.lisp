@@ -1,7 +1,7 @@
-(defpackage #:lem-config/file-prompt
-  (:use #:cl 
-        #:lem))
-(in-package #:lem-config/file-prompt)
+(defpackage :lem-config/file-prompt
+  (:use :cl 
+        :lem))
+(in-package :lem-config/file-prompt)
 
 
 (define-key *global-keymap* "C-x C-f" 'fp-find-file)

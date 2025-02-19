@@ -3,10 +3,10 @@
 ;;; Ref: https://codeberg.org/sasanidas/lem-config/
 ;;; Ref: https://github.com/garlic0x1/.lem/
 
-(defpackage #:lem-config
-  (:use #:cl 
-        #:lem))
-(in-package #:lem-config)
+(defpackage :lem-config
+  (:use :cl 
+        :lem))
+(in-package :lem-config)
 
 
 ;; Load init source files.
