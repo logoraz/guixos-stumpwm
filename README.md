@@ -1,4 +1,4 @@
-# ```lisp GuixOS (System Home &key StumpWM) StumpWM Configuration```
+# GuixOS (System Home &key StumpWM) StumpWM Configuration
 
 GuixOS StumpWM [Cr]ystallized [Mo]mentum: A Custom Guix System Distribution configured
 for StumpWM (Batteries Included). I'm riding out the last wave of X11 until
