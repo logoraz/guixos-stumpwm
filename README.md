@@ -1,6 +1,6 @@
-# GuixOS (System + Home) StumpWM Configuration
+# ```lisp GuixOS (System Home &key StumpWM) StumpWM Configuration```
 
-GuixOS StumpWM ("Crystallized Momentum"): A Custom Guix System Distribution configured
+GuixOS StumpWM [Cr]ystallized [Mo]mentum: A Custom Guix System Distribution configured
 for StumpWM (Batteries Included). I'm riding out the last wave of X11 until
 [StumpWM/Mahogany](https://github.com/stumpwm/mahogany)
 is ready for use!
@@ -57,9 +57,9 @@ Laptop.
        |- emacs/...
        |- lem/...
        |- nyxt/...
-       |- stumpwm/
+       |- stumpwm/                           ;; StumpWM Config [Cr]ystallized [Mo]mentum
           |- config.lisp
-          |- source/
+          |- source/                         ;; modularized config 'scripts'
              |- syntax.lisp
              |- start-xenv.lisp
              |- theme.lisp
@@ -67,7 +67,7 @@ Laptop.
              |- keybindings.lisp
              |- modeline.lisp
              |- utilities.lisp
-          |- library/
+          |- library/                        ;; Adapted contrib & personal modules
              |- end-session/
              |- swm-bluetooth/
              |- swm-brightness/
@@ -80,8 +80,6 @@ Laptop.
 
 
 ## Philosophy
-
-
 
  - Create a highly functional WM setup that is efficient & aesthetic.
  - Construct a modulur Guix System configuration as a Guile program.
