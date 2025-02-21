@@ -29,3 +29,7 @@
 
 (define-configuration buffer
     ((default-modes `(password-mode ,@%slot-value%))))
+
+;; To fix to work with KeePassXC update the slot that calls the keepassxc binary
+;; with flatpak-spawn --host <command> <command-args>
+;; strace -o ~/Desktop/flatnyxt.strace -e all flatpak --user run engineer.atlas.Nyxt
