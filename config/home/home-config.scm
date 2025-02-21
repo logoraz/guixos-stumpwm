@@ -41,8 +41,8 @@
 
 (define %cl-packages
   (list
-   ccl
    ecl
+   ccl
    ;; clasp-cl (??)
    maxima
    cl-sketch
