@@ -30,7 +30,8 @@
 (define-frame-preference "[ETC]"  (nil t t :class "Tiling"))
 (define-frame-preference "[PRIV]" (nil t t :class "Tiling"))
 
-(setf *dynamic-group-master-split-ratio* 1/2)
+;; undefined?
+;; (setf *dynamic-group-master-split-ratio* 1/2)
 
 ;;; X-window settings & stylization via gaps
 ;; Tell stumpwm to not honor application window size hints
