@@ -7,5 +7,7 @@
   :version "0.0.1"
   :serial t
   :depends-on ("nyxt"
-               "local-time")
+               "local-time"
+               "cl-ppcre"
+               "cl-transducers")
   :components ((:file "nx-code")))
