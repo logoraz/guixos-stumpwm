@@ -1,7 +1,7 @@
 ;;; Only for nxyt-3 or greater
 (nyxt:define-package :nx-code
-  (:local-nicknames (:t :cl-transducers)
-                    (:re :ppcre)))
+  (:local-nicknames (#:t :cl-transducers)
+                    (#:re :ppcre)))
 (in-package :nx-code)
 
 

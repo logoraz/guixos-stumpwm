@@ -10,7 +10,15 @@
 ;;; 3. Look into `sera:resolve-executable'
 ;;;    (sera:resolve-executable "keepassxc-cli")
 
-(in-package #:nyxt-user)
+;; (in-package :nyxt-user)
+
+(in-package :nyxt-user)
+
+;; https://forums.linuxmint.com/viewtopic.php?t=313358
+(defvar *keepassxc-exe* (concatenate 'string
+                                     "flatpak-spawn --host "
+                                     "keepassxc-cli")
+  "KeePassXC executable for password interface")
 
 (defvar *keepassxc-db* "/home/logoraz/Documents/moses/keepassxc/p.kdbx")
 
@@ -22,14 +30,12 @@
                                        &key &allow-other-keys)
            (setf (password:password-file interface) *keepassxc-db*
                  (password:key-file interface) *keepassxc-kf*
-                 (password:yubikey-slot interface) *yubikey-slot*))
+                 (password:yubikey-slot interface) *yubikey-slot*
+                 (password:executable interface) *keepassxc-exe*))
 
 (define-configuration nyxt/mode/password:password-mode
-    ((password-interface (make-instance 'password:keepassxc-interface))))
+  ((password-interface (make-instance 'password:keepassxc-interface))))
 
 (define-configuration buffer
     ((default-modes `(password-mode ,@%slot-value%))))
 
-;; To fix to work with KeePassXC update the slot that calls the keepassxc binary
-;; with flatpak-spawn --host <command> <command-args>
-;; strace -o ~/Desktop/flatnyxt.strace -e all flatpak --user run engineer.atlas.Nyxt
