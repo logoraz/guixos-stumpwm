@@ -19,8 +19,8 @@
 (defpackage :swm-wpctl
   (:use :cl
         :stumpwm)
-  (:local-nicknames (:re :ppcre)
-                    (:pf :parse-float))
+  (:local-nicknames (#:re :ppcre)
+                    (#:pf :parse-float))
   (:export #:*mixer-command*
            #:*wpctl-path*
            #:*step*

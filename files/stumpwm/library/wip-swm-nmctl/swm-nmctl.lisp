@@ -23,9 +23,10 @@
 
 
 (defpackage :swm-nmctl
-  (:use :cl :stumpwm)
+  (:use :cl
+        :stumpwm)
   (:import-from :foo/baz #:sym1 #:sym2)
-  (:local-nicknames (:nickname :original-package-name))
+  (:local-nicknames (#:nickname :original-package-name))
   (:export #:exsym1))
 (in-package :swm-nmctl)
 

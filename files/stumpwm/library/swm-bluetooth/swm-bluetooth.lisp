@@ -25,7 +25,7 @@
 (defpackage :swm-bluetooth
   (:use :cl
         :stumpwm)
-  (:local-nicknames (:re :ppcre))
+  (:local-nicknames (#:re :ppcre))
   (:export #:bluetooth-message-command
            #:bluetooth-connect-device
            #:*bluetooth-command*))
