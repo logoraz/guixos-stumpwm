@@ -83,68 +83,71 @@
    '((with-latest . "sbcl"))))
 
 (define %stumpwm-packages
-  (list sbcl
-        stumpwm-dev+servers ;; custom package
-        sbcl-parse-float ;;|--> gnu packages lisp-xyz
-        sbcl-local-time
-        sbcl-cl-ppcre
-        sbcl-zpng
-        sbcl-salza2
-        sbcl-clx
-        sbcl-zpb-ttf
-        sbcl-cl-vectors
-        sbcl-cl-store
-        sbcl-trivial-features
-        sbcl-global-vars
-        sbcl-trivial-garbage
-        sbcl-bordeaux-threads
-        sbcl-cl-fad
-        sbcl-clx-truetype
-        ;; stumpwm-contrib packages
-        sbcl-stumpwm-ttf-fonts ;;|--> gnu packages wm;
-        sbcl-stumpwm-kbd-layouts
-        sbcl-stumpwm-swm-gaps
-        sbcl-stumpwm-globalwindows
-        sbcl-stumpwm-cpu
-        sbcl-stumpwm-mem
-        sbcl-stumpwm-wifi
-        sbcl-stumpwm-battery-portable))
+  (list
+   sbcl
+   stumpwm-dev+servers ;; custom package
+   sbcl-parse-float ;;|--> gnu packages lisp-xyz
+   sbcl-local-time
+   sbcl-cl-ppcre
+   sbcl-zpng
+   sbcl-salza2
+   sbcl-clx
+   sbcl-zpb-ttf
+   sbcl-cl-vectors
+   sbcl-cl-store
+   sbcl-trivial-features
+   sbcl-global-vars
+   sbcl-trivial-garbage
+   sbcl-bordeaux-threads
+   sbcl-cl-fad
+   sbcl-clx-truetype
+   ;; stumpwm-contrib packages
+   sbcl-stumpwm-ttf-fonts ;;|--> gnu packages wm;
+   sbcl-stumpwm-kbd-layouts
+   sbcl-stumpwm-swm-gaps
+   sbcl-stumpwm-globalwindows
+   sbcl-stumpwm-cpu
+   sbcl-stumpwm-mem
+   sbcl-stumpwm-wifi
+   sbcl-stumpwm-battery-portable))
 
 (define %guixos-system-packages
-  (list bcachefs-tools
+  (list
+   ;; file systems
+   bcachefs-tools
 
-        ;; Tools
-        pipewire
-        wireplumber
-        bluez
-        bluez-alsa
-        brightnessctl
-        lm-sensors
-        openssh-sans-x
-        git
-        (list git "send-email")
-        curl
-        wget
-        zip
-        unzip
+   ;; Utilities
+   pipewire
+   wireplumber
+   bluez
+   bluez-alsa
+   brightnessctl
+   lm-sensors
+   openssh-sans-x
+   git
+   (list git "send-email")
+   curl
+   wget
+   zip
+   unzip
 
-        ;; Xorg
-        xterm ;;|--> gnu packages xorg
-        transset
-        xhost
-        xset
-        xsetroot
-        xinput
-        xrdb
-        xrandr
-        xclip ;;|--> gnu packages xdisorg
-        xsel
-        xss-lock
+   ;; Xorg
+   xterm ;;|--> gnu packages xorg
+   transset
+   xhost
+   xset
+   xsetroot
+   xinput
+   xrdb
+   xrandr
+   xclip ;;|--> gnu packages xdisorg
+   xsel
+   xss-lock
 
-        ;; Fonts
-        font-hack
-        font-jetbrains-mono
-        font-awesome))
+   ;; Fonts
+   font-hack
+   font-jetbrains-mono
+   font-awesome))
 
 (define %guixos-base-packages
   (append %stumpwm-packages
