@@ -59,7 +59,9 @@ Laptop.
        |- nyxt/...
        |- stumpwm/                           ;; StumpWM Config [Cr]ystallized [Mo]mentum
           |- config.lisp
+          |- swm-config.asd
           |- source/                         ;; modularized config 'scripts'
+             |- swm-config.lisp
              |- syntax.lisp
              |- start-xenv.lisp
              |- theme.lisp
@@ -197,7 +199,7 @@ notifications...
 
  - Create base system config to apply to machine-specific configurations [Issue #4] 
  - Implement/Use bcacefs for file systems [Issue #5]
- - Minimize dependency on `xdg-files` (reserved for one-off's where possible)
+ - Minimize dependency on 'mutable-files` &`xdg-files` (reserved for one-off's where possible)
  - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
 
    

@@ -1,18 +1,8 @@
-;;;; Start X11 environment for StumpWM
+(defpackage :swm-config/start-xenv
+  (:use :cl
+        :stumpwm))
+(in-package :swm-config/start-xenv)
 
-;;; Author:
-;;; Erik P Almaraz
-
-;;; License:
-;;; GPLv3
-
-;;; Commentary:
-;;;
-
-;;; References:
-;;;
-
-(in-package :stumpwm)
 
 ;;; X11 Settings
 

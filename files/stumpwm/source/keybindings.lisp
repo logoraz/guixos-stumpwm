@@ -1,32 +1,18 @@
-;;;; Keybindings for StumpWM
-
-;;; Author:
-;;; Erik P Almaraz
-
-;;; License:
-;;; GPLv3
-
-;;; Commentary:
-;;;
-
-;;; Commentary:
-;;; TODO - Skinny down StumpWM's original Top Level keymap, don't need every option
-;;;        that is present, also - it takes a while to load...
-
-;;; References:
-;;;
-
-(in-package :stumpwm)
+(defpackage :swm-config/keybindings
+  (:use :cl
+        :stumpwm))
+(in-package :swm-config/keybindings)
 
 ;;; TODO - delete *root-map* and build back with only needed keybindings
 ;;;        problem is, by default it is a bit polluted and has a long load time.
 
 ;;; StumpWM contrib + custom modules used
-(load-module "kbd-layouts")
-(load-module "swm-bluetooth")
-(load-module "swm-screenshot")
-(load-module "end-session")
-(load-module "swm-brightness")
+;; (load-module "swm-wpctl")
+;; (load-module "kbd-layouts")
+;; (load-module "swm-bluetooth")
+;; (load-module "swm-screenshot")
+;; (load-module "end-session")
+;; (load-module "swm-brightness")
 
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.

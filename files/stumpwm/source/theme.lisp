@@ -1,24 +1,29 @@
-;;;; Theme settings for StumpWM
-
-;;; Author:
-;;; Erik P Almaraz
-
-;;; License:
-;;; GPLv3
-
-;;; Commentary:
-;;;
-
-;;; References:
-;;;
-
-
-(in-package :stumpwm)
+(defpackage :swm-config/theme
+  (:use :cl
+        :stumpwm
+        :swm-config)
+  (:export #:+nord00+
+           #:+nord01+
+           #:+nord02+
+           #:+nord03+
+           #:+nord04+
+           #:+nord05+
+           #:+nord06+
+           #:+nord07+
+           #:+nord08+
+           #:+nord09+
+           #:+nord10+
+           #:+nord11+
+           #:+nord12+
+           #:+nord13+
+           #:+nord14+
+           #:+nord15+))
+(in-package :swm-config/theme)
 
 ;;; Fonts
 
 ;; Enable TTF fonts
-(load-module "ttf-fonts")
+;; (load-module "ttf-fonts")
 (setf xft:*font-dirs* (list (concat +guix-system-path+ "fonts/")
                             (concat +guix-home-path+ "fonts/")
                             (concat +xdg-data-home-path+ "fonts/"))
@@ -43,22 +48,22 @@
 ;;; Colors
 
 ;; Nord Color Palette
-(defconstant +nord00+ "#2e3440")  ;; 'Black'
-(defconstant +nord01+ "#3b4252")  ;; "Dark Gray'
-(defconstant +nord02+ "#434c5e")  ;; 'Medium Gray'
-(defconstant +nord03+ "#4c566a")  ;; 'Gray'
-(defconstant +nord04+ "#d8dee9")  ;; 'Light Gray'
-(defconstant +nord05+ "#e5e9f0")  ;; 'Off-white'
-(defconstant +nord06+ "#eceff4")  ;; 'White'
-(defconstant +nord07+ "#8fbcbb")  ;; 'Blue/Green'
-(defconstant +nord08+ "#88c0d0")  ;; 'Teal'
-(defconstant +nord09+ "#81a1c1")  ;; 'Blue/Gray'
-(defconstant +nord10+ "#5e81ac")  ;; 'Blue'
-(defconstant +nord11+ "#bf616a")  ;; 'Red'
-(defconstant +nord12+ "#d08770")  ;; 'Orange'
-(defconstant +nord13+ "#ebcb8b")  ;; 'Yellow'
-(defconstant +nord14+ "#a3be8c")  ;; 'Green'
-(defconstant +nord15+ "#b48ead")  ;; 'Purple'
+(defparameter +nord00+ "#2e3440")  ;; 'Black'
+(defparameter +nord01+ "#3b4252")  ;; "Dark Gray'
+(defparameter +nord02+ "#434c5e")  ;; 'Medium Gray'
+(defparameter +nord03+ "#4c566a")  ;; 'Gray'
+(defparameter +nord04+ "#d8dee9")  ;; 'Light Gray'
+(defparameter +nord05+ "#e5e9f0")  ;; 'Off-white'
+(defparameter +nord06+ "#eceff4")  ;; 'White'
+(defparameter +nord07+ "#8fbcbb")  ;; 'Blue/Green'
+(defparameter +nord08+ "#88c0d0")  ;; 'Teal'
+(defparameter +nord09+ "#81a1c1")  ;; 'Blue/Gray'
+(defparameter +nord10+ "#5e81ac")  ;; 'Blue'
+(defparameter +nord11+ "#bf616a")  ;; 'Red'
+(defparameter +nord12+ "#d08770")  ;; 'Orange'
+(defparameter +nord13+ "#ebcb8b")  ;; 'Yellow'
+(defparameter +nord14+ "#a3be8c")  ;; 'Green'
+(defparameter +nord15+ "#b48ead")  ;; 'Purple'
 
 (setq *colors*
       (list (list +nord00+ +nord01+)          ;; 0 Black

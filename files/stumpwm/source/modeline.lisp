@@ -1,19 +1,10 @@
-;;;; Modeline Configuration for StumpWM
+(defpackage :swm-config/modeline
+  (:use :cl
+        :stumpwm
+        :swm-config/theme)
+  (:import-from :alexandria #:xor))
+(in-package :swm-config/modeline)
 
-;;; Author:
-;;; Erik P Almaraz
-
-;;; License:
-;;; GPLv3
-
-;;; Commentary:
-;;;
-
-;;; References:
-;;; 1. https://config.phundrak.com/stumpwm/
-;;;
-
-(in-package :stumpwm)
 
 ;; The timeout of the modeline indicates how often it refreshes in seconds.
 (setf *mode-line-timeout* 2)
@@ -36,11 +27,11 @@
       *mode-line-border-width* 1)
 
 ;;; Modeline Packages (stumpwm-contrib + custom modules)
-(load-module "cpu")
-(load-module "mem")
-(load-module "swm-wpctl")
-(load-module "battery-portable")
-(load-module "wifi")
+;; (load-module "cpu")
+;; (load-module "mem")
+;; (load-module "swm-wpctl")
+;; (load-module "battery-portable")
+;; (load-module "wifi")
 
  
 ;;; Configure parameters for mode-line modules 
@@ -63,8 +54,8 @@
 
 
 ;;; Modeline Formatter
-(defconstant +L+ "^f2^f0")
-(defconstant +B+ "^f2󰄌^f0 %B")
+(defparameter +L+ "^f2^f0")
+(defparameter +B+ "^f2󰄌^f0 %B")
 
 (defvar *mode-line-formatter-list*
   `(("%g")    ;; Groups
@@ -78,6 +69,7 @@
     ("%d"))   ;; Date/Time
   "List of formatters for the modeline.")
 
+;;; ref: https://config.phundrak.com/stumpwm/
 (defun generate-modeline (elements &optional not-invertedp rightp)
   "Generate a modeline for StumpWM.
 ELEMENTS should be a list of `cons'es which `first' is the modeline
@@ -97,7 +89,7 @@ when the `first' is a formatter and t when it is a shell command."
                  (commandp        (rest current-element)))
             (cons (if commandp
                       `(:eval (run-shell-command ,formatter t))
-                    (format nil "~A" formatter))
+                      (format nil "~A" formatter))
                   (generate-modeline (rest elements)
                                      (not not-invertedp)
                                      (if (string= "^>" (first (first elements)))
@@ -110,8 +102,8 @@ when the `first' is a formatter and t when it is a shell command."
      (setf *screen-mode-line-format*
            (rest (generate-modeline *mode-line-formatter-list*))))))
 
-(reload-modeline)
-
 ;;; Start the mode line
 (when *initializing*
   (mode-line))
+
+(reload-modeline)

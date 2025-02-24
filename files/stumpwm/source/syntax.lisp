@@ -1,4 +1,6 @@
-;;;; StumpWM Config Helper Functions & Macros
+(defpackage :swm-config/syntax
+  (:use :cl
+        :stumpwm))
+(in-package :swm-config/syntax)
 
-(in-package :stumpwm)
-
+;;; StumpWM Config Helper Functions & Macros

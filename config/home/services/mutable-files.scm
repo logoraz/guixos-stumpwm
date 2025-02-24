@@ -30,6 +30,11 @@
        *home-path*
        "files/stumpwm/config.lisp"))
 
+    (".config/stumpwm/swm-config.asd"
+     ,(string-append
+       *home-path*
+       "files/stumpwm/swm-config.asd"))
+
     (".config/stumpwm/library"
      ,(string-append
        *home-path*

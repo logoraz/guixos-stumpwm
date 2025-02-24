@@ -1,18 +1,8 @@
-;;;; StumpWM Screen Configuration:  Frames & Windows
-
-;;; Author:
-;;; Erik P Almaraz
-
-;;; License:
-;;; GPLv3
-
-;;; Commentary:
-;;;
-
-;;; References:
-;;;
-
-(in-package :stumpwm)
+(defpackage :swm-config/frames
+  (:use :cl
+        :stumpwm
+        :swm-config/theme))
+(in-package :swm-config/frames)
 
 ;;; Window Groups & Placement
 (when *initializing*
@@ -24,11 +14,11 @@
 
 (clear-window-placement-rules)
 
-(define-frame-preference "[HOME]" (nil t t :class "Tiling"))
-(define-frame-preference "[DEV]"  (nil t t :class "Tiling"))
-(define-frame-preference "[WWW]"  (nil t t :class "Tiling"))
-(define-frame-preference "[ETC]"  (nil t t :class "Tiling"))
-(define-frame-preference "[PRIV]" (nil t t :class "Tiling"))
+(define-frame-preference "HOME" (nil t t :class "Tiling"))
+(define-frame-preference "DEV"  (nil t t :class "Tiling"))
+(define-frame-preference "WWW"  (nil t t :class "Tiling"))
+(define-frame-preference "ETC"  (nil t t :class "Tiling"))
+(define-frame-preference "PRIV" (nil t t :class "Tiling"))
 
 ;; undefined?
 ;; (setf *dynamic-group-master-split-ratio* 1/2)
@@ -39,8 +29,8 @@
 (setf *ignore-wm-inc-hints* t)
 
 ;;; StumpWM contrib + custom modules used
-(load-module "swm-gaps")
-(load-module "globalwindows")
+;; (load-module "swm-gaps")
+;; (load-module "globalwindows")
 
 ;; Window Gaps
 (setf swm-gaps:*head-gaps-size*  0
