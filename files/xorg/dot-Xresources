@@ -19,6 +19,9 @@ XTerm*XftFont: Fira Code:size=11:antialias=true:style=Regular
 XTerm*vt100.faceName: Fira Code:size=11:antialias=true:style=Regular
 XTerm*vt100.boldFont: Fira Code:size=11:antialias=true:style=Bold
 
+! Scrollback History
+xterm*saveLines: 120000
+
 ! Color Theme: Molokai
 ! Ref: https://www.futurile.net/2016/06/15/xterm-256color-themes-molokai-terminal-theme/
 ! Colours are in groups as the second one should be a brighter version.
