@@ -5,7 +5,8 @@
            #:*guix-home-path*))
 (in-package :swm-config)
 
-;;; Set PATHs: modules & data directories, etc.
+
+;;;; Set PATHs: modules & data directories, etc.
 
 ;;; TODO: clean up and follow better practice for these...
 ;;; i.e. something similar to what is employed in StumpWM/primitives.lisp
