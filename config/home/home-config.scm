@@ -17,21 +17,23 @@
   #:use-module (config home services udiskie))
 
 ;;TODO: cleanup/organize
-(use-package-modules fonts web-browsers password-utils gnupg mail
-                     gstreamer video compton image-viewers linux music
-                     gnucash gimp inkscape graphics image gnome gnome-xyz
-                     guile guile-xyz emacs emacs-xyz sdl text-editors
-                     shellutils pdf glib enchant pulseaudio
-                     lisp lisp-xyz lisp-check maths wm
-                     freedesktop kde-frameworks
-                     ssh cups suckless networking package-management)
+(use-package-modules
+ fonts web-browsers password-utils gnupg mail
+ gstreamer video linux music
+ gnucash gimp inkscape graphics image gnome gnome-xyz
+ guile guile-xyz emacs emacs-xyz sdl text-editors
+ shellutils pdf glib enchant pulseaudio
+ lisp lisp-xyz lisp-check maths wm
+ freedesktop kde-frameworks
+ ssh cups suckless networking package-management)
 
 
-;;; Package Transformations
-;; (define latest-nyxt
-;;   (options->transformation
-;;    '((without-tests . "nyxt")
-;;      (with-latest   . "nyxt"))))
+;;; Package & Transformations
+;;; https://guix.gnu.org/manual/en/html_node/Defining-Package-Variants.html
+(define latest-nyxt
+  (options->transformation
+   '((without-tests . "nyxt")
+     (with-latest   . "nyxt"))))
 
 ;;; Packages
 (define %guile-packages
@@ -63,9 +65,6 @@
 (define %logoraz-packages
   (list
    ;; StumpWM Utilities
-   picom
-   feh
-   libnotify
 
    ;; Mail
    mu

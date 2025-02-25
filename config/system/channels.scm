@@ -1,5 +1,6 @@
 ;;; Define Channels
-(use-modules (guix channels))
+(define-module (config system channels)
+  #:use-module (guix channels))
 
 (define guix-channel
   (channel
@@ -61,9 +62,10 @@
 ;; Ref: https://guix.gnu.org/cookbook/en/html_node/Channels.html
 ;; https://guix.gnu.org/manual/en/html_node/Creating-a-Channel.html#Creating-a-Channel
 (define logoraz-channels
-  (list nonguix-channel
-        guix-channel))
+  (append
+   (list nonguix-channel
+         guix-channel)
+   %default-channels))
 
 ;; Instantiate selected channels
-(append logoraz-channels
-        %default-channels)
+logoraz-channels

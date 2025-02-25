@@ -10,14 +10,19 @@
   #:use-module (nongnu system linux-initrd)
   #:use-module (config packages stumpwm))
 
-(use-system-modules keyboard nss)
+(use-system-modules
+ keyboard nss)
 
-(use-package-modules ssh cups suckless fonts wm lisp lisp-xyz
-                     file-systems linux audio version-control
-                     wget curl compression xorg xdisorg)
+;;TODO: cleanup/organize
+(use-package-modules
+ ssh cups suckless fonts wm lisp lisp-xyz
+ file-systems linux audio version-control
+ wget curl compression xorg xdisorg
+ compton image-viewers gnome)
 
-(use-service-modules cups ssh desktop xorg
-                     guix networking)
+(use-service-modules
+ cups ssh desktop xorg
+ guix networking)
 
 
 ;;; operating-system parameters
@@ -76,7 +81,6 @@
 
 
 ;;; Packages & Transformations
-
 ;; ref: https://guix.gnu.org/manual/en/guix.html#Defining-Package-Variants
 (define latest-sbcl
   (options->transformation
@@ -116,7 +120,10 @@
    ;; file systems
    bcachefs-tools
 
-   ;; Utilities
+   ;; StumpWM Desktop Utilities
+   picom
+   feh
+   libnotify
    pipewire
    wireplumber
    bluez
@@ -143,6 +150,7 @@
    xclip ;;|--> gnu packages xdisorg
    xsel
    xss-lock
+   xmodmap
 
    ;; Fonts
    font-hack
