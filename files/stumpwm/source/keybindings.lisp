@@ -96,8 +96,8 @@
   "Screenlock command using slock - bound in keybindings under end-session map."
   (run-shell-command *screenlock-command*))
 
-;; Use loginctl instead of the default systemctl
-(setf swm-end-session:*end-session-command* "loginctl")
+;; swm-end-session uses loginctl by default instead of systemctl
+;; (setf swm-end-session:*end-session-command* "loginctl")
 
 (defvar *end-session-keymap*
   (let ((key-map (make-sparse-keymap)))

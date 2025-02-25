@@ -29,7 +29,7 @@
 (setf *startup-message* nil)
 
 
-;;; X11 Settings
+;;;; X11 Settings
 
 ;;; Run xmodmap to remap keys
 ;; (run-shell-command "xmodmap ~/.xmodmap")
