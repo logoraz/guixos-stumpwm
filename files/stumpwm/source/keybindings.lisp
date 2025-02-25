@@ -6,14 +6,6 @@
 ;;; TODO - delete *root-map* and build back with only needed keybindings
 ;;;        problem is, by default it is a bit polluted and has a long load time.
 
-;;; StumpWM contrib + custom modules used
-;; (load-module "swm-wpctl")
-;; (load-module "kbd-layouts")
-;; (load-module "swm-bluetooth")
-;; (load-module "swm-screenshot")
-;; (load-module "end-session")
-;; (load-module "swm-brightness")
-
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.
 ;; function immediately runs switch-keyboard-layout which provides message!
@@ -95,7 +87,7 @@
 (define-key *root-map* (kbd "V") '*my-screenshot-keymap*)
 (define-key *top-map* (kbd "Print") '*my-screenshot-keymap*)
 
-;;; Session Controls (end-session)
+;;; Session Controls (swm-end-session)
 ;; Screensaver command for slock
 (defvar *screenlock-command* "slock"
   "Set screenlock command executable, default is slock.")
@@ -105,7 +97,7 @@
   (run-shell-command *screenlock-command*))
 
 ;; Use loginctl instead of the default systemctl
-(setf end-session:*end-session-command* "loginctl")
+(setf swm-end-session:*end-session-command* "loginctl")
 
 (defvar *end-session-keymap*
   (let ((key-map (make-sparse-keymap)))

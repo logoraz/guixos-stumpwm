@@ -28,10 +28,6 @@
 ;; This was the cause of swm-gaps crashing with Emacs!
 (setf *ignore-wm-inc-hints* t)
 
-;;; StumpWM contrib + custom modules used
-;; (load-module "swm-gaps")
-;; (load-module "globalwindows")
-
 ;; Window Gaps
 (setf swm-gaps:*head-gaps-size*  0
       swm-gaps:*inner-gaps-size* 5
@@ -48,16 +44,16 @@
       *window-border-style*       :thick
       *window-format*             "%n:%t")
 
-;; (set-win-bg-color        +nord02+)
-(set-focus-color         +nord09+)
-(set-unfocus-color       +nord03+)
-(set-float-focus-color   +nord09+)
-(set-float-unfocus-color +nord03+)
+;; (set-win-bg-color        *nord02*)
+(set-focus-color         *nord09*)
+(set-unfocus-color       *nord03*)
+(set-float-focus-color   *nord09*)
+(set-float-unfocus-color *nord03*)
 
 ;;; Message and Input Windows Stylization Parameters
-(set-border-color +nord09+)
-(set-fg-color     +nord04+)
-(set-bg-color     +nord00+)
+(set-border-color *nord09*)
+(set-fg-color     *nord04*)
+(set-bg-color     *nord00*)
 
 (setf *key-seq-color* "^B^6")
 (setf *which-key-format* (concat *key-seq-color* "*~5a^n ~a"))

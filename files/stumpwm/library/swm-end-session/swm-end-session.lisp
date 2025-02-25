@@ -1,7 +1,5 @@
-;;;; end-session.lisp
-
 ;;; Copyright (c) 2018 Stuart Dilts
-;;; Copyright (C) 2024 - 2025 Erik P Almaraz
+;;; Copyright (C) 2025 - 2025 Erik P Almaraz
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person
 ;;; obtaining a copy of this software and associated documentation
@@ -28,13 +26,13 @@
 ;;;
 
 
-(defpackage :end-session
+(defpackage :swm-end-session
   (:use :cl
         :stumpwm)
   (:export #:*end-session-command*))
-(in-package :end-session)
+(in-package :swm-end-session)
 
-(defvar *end-session-command* "systemctl")
+(defparameter *end-session-command* "loginctl")
 
 (defun yes-no-diag (query-string)
   "Presents a yes-no dialog to the user asking query-string.
@@ -90,9 +88,9 @@ Returns true when yes is selected"
       (apply (second choice) nil))))
 
 (defvar *end-session-menu*
-  (list (list "Logout" #'logout)
+  (list (list "Logout"   #'logout)
         (list "Restart"  #'restart-computer)
         (list "Shutdown" #'shutdown-computer)
-        (list "Suspend" #'suspend-computer))
+        (list "Suspend"  #'suspend-computer))
   "The options that are available to quit a stumpwm session.
 Entries in the list has the format of (\"item in menu\" #'function-to-call)")

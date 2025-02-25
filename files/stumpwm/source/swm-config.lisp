@@ -1,12 +1,8 @@
 (defpackage :swm-config
   (:use :cl
         :stumpwm)
-  (:export #:+guix-system-path+
-           #:+guix-home-path+
-           #:+xdg-data-home-path+
-           #:+xdg-cache-home-path+
-           #:+swm-config-source-dir+
-           #:+swm-config-library-dir+))
+  (:export #:*guix-system-path*
+           #:*guix-home-path*))
 (in-package :swm-config)
 
 ;;; Set PATHs: modules & data directories, etc.
@@ -14,44 +10,20 @@
 ;;; TODO: clean up and follow better practice for these...
 ;;; i.e. something similar to what is employed in StumpWM/primitives.lisp
 
-;; Define Guix profiles
-(defparameter +guix-system-path+ "/run/current-system/profile/share/"
-             "Define Guix System profile PATH.")
+;; Define Guix System/Home Profiles
+(defparameter *guix-system-path* "/run/current-system/profile/share/"
+  "Define Guix System profile PATH.")
 
-(defparameter +guix-home-path+ "/home/logoraz/.guix-home/profile/share/"
+(defparameter *guix-home-path* "/home/logoraz/.guix-home/profile/share/"
   "Define Guix Home profile PATH.")
-
-(defparameter +xdg-data-home-path+ (concat (getenv "XDG_DATA_HOME") "/")
-  "Define XDG_DATA_HOME PATH.")
-
-(defparameter +xdg-cache-home-path+ (concat (getenv "XDG_CACHE_HOME") "/")
-  "Define XDG_CACHE_HOME PATH.")
-
-(defparameter +swm-config-source-dir+ (concat (getenv "XDG_CONFIG_HOME")
-                                             "/stumpwm/source/")
-  "Define StumpWM Config Source Directory.")
-
-(defparameter +swm-config-library-dir+ (concat (getenv "XDG_CONFIG_HOME")
-                                              "/stumpwm/library/")
-  "Define StumpWM Config Module Library Directory.")
 
 ;;; Debugging Logs
 ;; See stumpwm/primitives.lisp
-(setf *data-dir* (concat +xdg-cache-home-path+ "stumpwm/"))
+(setf *data-dir* (uiop:xdg-cache-home "stumpwm/"))
 (stumpwm::ensure-data-dir)
 
 (setf *debug-level* 5)
 (redirect-all-output (data-dir-file "debug-output" "txt"))
-
-;; Set StumpWM *official* contrib modules directory - at system level!
-(set-module-dir (concat +guix-system-path+
-                        "common-lisp/sbcl/"))
-
-;;; Add custom modules to StumpWM Load Path:
-(set-module-dir +swm-config-library-dir+)
-
-;; Set StumpWM as default package
-;; (setf stumpwm:*default-package* :stumpwm)
 
 ;; A startup message can be used when initializing StumpWM, for now set to nil.
 (setf *startup-message* nil)

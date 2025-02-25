@@ -40,7 +40,7 @@ Laptop.
              |- xdg-files.scm
        |- packages/                          ;; Custom GuixOS Package Modules
           |- video.scm
-          |- stumpwm.scm                     ;; to get master branch/dev version
+          |- stumpwm.scm                     ;; to get master branch/dev version (temp)
           |- clasp.scm                       ;; WIP (trying n help folks finish this)
        |- services/                          ;; Custom GuixOS Service Modules
           |- tbd
@@ -63,18 +63,18 @@ Laptop.
           |- source/                         ;; modularized config 'scripts'
              |- swm-config.lisp
              |- syntax.lisp
-             |- start-xenv.lisp
              |- theme.lisp
              |- frames.lisp
              |- keybindings.lisp
              |- modeline.lisp
              |- utilities.lisp
           |- library/                        ;; Adapted contrib & personal modules
-             |- end-session/
+             |- swm-wpctl/          
+             |- swm-end-session/
+             |- swm-screenshot/
              |- swm-bluetooth/
              |- swm-brightness/
-             |- swm-screenshot/
-             |- swm-wpctl/
+             |- wip-swm-notify/
              |- wip-swm-nmctl/
        |- xorg/...
        |- zathura/...
@@ -197,10 +197,13 @@ notifications...
 
 ## TODOs (Wish List)
 
- - Create base system config to apply to machine-specific configurations [Issue #4] 
- - Implement/Use bcacefs for file systems [Issue #5]
- - Minimize dependency on 'mutable-files` &`xdg-files` (reserved for one-off's where possible)
- - Research solution to blueman-applet: https://issues.guix.gnu.org/71528
+ - Setup StumpWM config as it's own Common Lisp System [partially complete]
+ - Configure StumpWM to handle multiple displays via xrandr
+ - Implement `notify` & `globalwindows` contrib modules (update)
+ - Complete/Create contrib modules for Bluetooth, Brightness and Network Management
+ - Create base system config to apply to machine-specific configurations
+ - Minimize/Reduce dependency on 'mutable-files` & `xdg-files`
+ - Implement/Use bcacefs for file systems
 
    
 ## References:

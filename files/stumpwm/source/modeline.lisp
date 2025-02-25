@@ -20,20 +20,12 @@
 (setf *window-format* " %n: %30t ")
 
 ;; Set mode-line colors
-(setf *mode-line-background-color* +nord00+
-      *mode-line-foreground-color* +nord04+)
+(setf *mode-line-background-color* *nord00*
+      *mode-line-foreground-color* *nord04*)
 
-(setf *mode-line-border-color* +nord03+
+(setf *mode-line-border-color* *nord03*
       *mode-line-border-width* 1)
 
-;;; Modeline Packages (stumpwm-contrib + custom modules)
-;; (load-module "cpu")
-;; (load-module "mem")
-;; (load-module "swm-wpctl")
-;; (load-module "battery-portable")
-;; (load-module "wifi")
-
- 
 ;;; Configure parameters for mode-line modules 
 ;; f0 = Hack, f1 = JetBrains Mono, f2 = Symbols Nerd Font Mono, f3 = FontAwesome
 (setf cpu::*cpu-modeline-fmt*        "%c %t"
@@ -79,11 +71,11 @@ when the `first' is a formatter and t when it is a shell command."
     (cons (format nil " ^[~A^]^(:bg \"~A\") "
                   (format nil "^(:fg \"~A\")^(:bg \"~A\")~A"
                           (if (xor not-invertedp rightp)
-                              +nord00+ +nord02+)
+                              *nord00* *nord02*)
                           (if (xor not-invertedp rightp)
-                              +nord02+ +nord00+)
+                              *nord02* *nord00*)
                           (if rightp "" ""))
-                  (if not-invertedp +nord02+ +nord00+))
+                  (if not-invertedp *nord02* *nord00*))
           (let* ((current-element (first elements))
                  (formatter       (first current-element))
                  (commandp        (rest current-element)))
