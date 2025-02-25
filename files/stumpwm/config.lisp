@@ -8,9 +8,9 @@
                       #P"~/.config/stumpwm/"
                       #P"~/.config/stumpwm/library/swm-wpctl/"
                       #P"~/.config/stumpwm/library/swm-end-session/"
+                      #P"~/.config/stumpwm/library/swm-screenshot/"
                       ;; #P"~/.config/stumpwm/library/wip-swm-notify/"
                       #P"~/.config/stumpwm/library/swm-bluetooth/"
-                      #P"~/.config/stumpwm/library/swm-screenshot/"
                       #P"~/.config/stumpwm/library/swm-brightness/"
                       ;; #P"~/.config/stumpwm/library/wip-swm-nmctl/"
                       #P"~/.local/share/common-lisp/source/")
