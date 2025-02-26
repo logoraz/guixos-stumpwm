@@ -23,7 +23,7 @@
   :bind (("C-c n j" . raz/denote-journal)
          ("C-c n n" . denote))
   :init
-  (setq raz/denote--dir "~/Documents/denotes/")
+  (setq raz/denote--dir "~/Notes/denotes/")
   :custom
   (denote-directory (expand-file-name raz/denote--dir))
   (denote-dired-directories (list
