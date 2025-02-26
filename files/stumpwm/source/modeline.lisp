@@ -94,8 +94,9 @@ when the `first' is a formatter and t when it is a shell command."
      (setf *screen-mode-line-format*
            (rest (generate-modeline *mode-line-formatter-list*))))))
 
+;; Load newly designed mode-line
+(reload-modeline)
+
 ;;; Start the mode line
 (when *initializing*
   (mode-line))
-
-(reload-modeline)

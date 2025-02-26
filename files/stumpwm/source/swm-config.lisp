@@ -51,7 +51,7 @@
 ;; (run-shell-command "xinput set-prop 12 185 0")
 ;; Determine a way to dynamically find prop id as it seems to change when
 ;; devices are added, specifically wifi devices...
-(defvar *trackpad-command* "xinput set-prop 10 185"
+(defvar *trackpad-command* "xinput set-prop 12 185"
   "Set xinput set-prop specifics to Enable/Disable trackpad...")
 
 (defun set-trackpad-state (&optional (state "0"))
