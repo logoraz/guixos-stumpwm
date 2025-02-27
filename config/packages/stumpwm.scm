@@ -12,6 +12,7 @@
   #:use-module (gnu packages check)
   #:use-module (gnu packages lisp-check)
   #:use-module (gnu packages lisp-xyz)
+  #:use-module (gnu packages wm)
   #:use-module (gnu packages texinfo))
 
 (define-public stumpwm-dev
@@ -95,7 +96,10 @@ productive, customizable lisp based systems.")
     (inherit stumpwm-dev)
     (name "stumpwm-with-servers")
     (inputs
-     (list sbcl-micros sbcl-slynk stumpwm-dev))
+     (list stumpwm-dev
+           sbcl-slynk
+           sbcl-micros
+           sbcl-stumpwm-notify))
     (arguments
      (substitute-keyword-arguments (package-arguments stumpwm-dev)
        ((#:phases phases)
@@ -107,10 +111,16 @@ productive, customizable lisp based systems.")
                  (setenv "HOME" "/tmp")
                  (build-program program outputs
                                 #:entry-program '((stumpwm:stumpwm) 0)
-                                #:dependencies '("stumpwm" "slynk" "micros")
+                                #:dependencies '("stumpwm"
+                                                 "slynk"
+                                                 "micros"
+                                                 "notify")
                                 #:dependency-prefixes
                                 (map (lambda (input) (assoc-ref inputs input))
-                                     '("stumpwm" "sbcl-slynk" "sbcl-micros"))))))
+                                     '("stumpwm"
+                                       "sbcl-slynk"
+                                       "sbcl-micros"
+                                       "sbcl-stumpwm-notify"))))))
            (delete 'copy-source)
            (delete 'build)
            (delete 'check)

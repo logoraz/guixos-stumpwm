@@ -45,21 +45,29 @@
   (list
    ecl
    ccl
-   ;; clasp-cl (??)
+   ;; clasp (!!)
+
+   ;; CL Foundation
    maxima
+   cl-clog
    cl-sketch
    cl-hunchentoot
    cl-easy-routes
    cl-djula
    cl-clack
    cl-mito
+   cl-3d-math
    cl-transducers
    cl-autowrap
    cl-jzon
    cl-rove
+   cl-str
+   cl-babel
+   cl-alexandria
    cl-serapeum
    cl-trivial-types
    cl-closer-mop
+   cl-bordeaux-threads ;; duplicate (for dev purposes)
    cl-lparallel))
 
 (define %logoraz-packages

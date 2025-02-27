@@ -14,7 +14,8 @@
                "battery-portable"
                "wifi"
                ;; modified stumpwm-contrib modules
-               "swm-notify"
+               ;; "sb-rotate-byte"
+               ;; "swm-notify"
                "swm-wpctl"
                "swm-end-session"
                "swm-screenshot"

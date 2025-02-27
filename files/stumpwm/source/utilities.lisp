@@ -5,8 +5,9 @@
 
 
 ;;; Experimental stumpwm-contrib packages (to trial)
-;; requires sbcl-xml-emitter and sbcl-dbus -> failing w/ error on sb-rotate-byte...
-(swm-notify:notify-server-toggle)
+;; Needed to include sbcl-stumpwm-notify in stumpwm package definition as input
+;; in order to work and have access to sb-rotate-byte, otherwise fails.
+(notify:notify-server-toggle)
 
 
 ;; (defun notification-handler (app icon summary body)

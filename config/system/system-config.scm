@@ -105,7 +105,8 @@
    sbcl-bordeaux-threads
    sbcl-cl-fad
    sbcl-clx-truetype
-   ;; stumpwm-contrib packages
+   ;; external stumpwm-contrib packages
+   ;; TODO: put vetted external contrib modules in stumpwm-package (works better)
    sbcl-stumpwm-ttf-fonts ;;|--> gnu packages wm;
    sbcl-stumpwm-kbd-layouts
    sbcl-stumpwm-swm-gaps
