@@ -1,11 +1,20 @@
-(in-package #:notify)
+(defpackage :swm-notify
+  (:use :cl
+	:dbus
+	:bordeaux-threads)
+  (:export #:*notification-received-hook*
+	   #:notify-server-toggle
+           #:notify-server-on
+           #:notify-server-off))
+(in-package :swm-notify)
 
-(export
- '(*notify-server-max-title-lines*
-   *notify-server-max-body-lines*
-   *notify-server-max-line-length*
-   *notify-server-title-color*
-   *notify-server-body-color*))
+;; Why export again?
+;; (export
+;;  '(*notify-server-max-title-lines*
+;;    *notify-server-max-body-lines*
+;;    *notify-server-max-line-length*
+;;    *notify-server-title-color*
+;;    *notify-server-body-color*))
 
 ;;;;
 ;;;; Notify server to show standard notifications messages
