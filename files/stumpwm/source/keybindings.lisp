@@ -3,13 +3,12 @@
         :stumpwm))
 (in-package :swm-config/keybindings)
 
-;;; TODO - delete *root-map* and build back with only needed keybindings
-;;;        problem is, by default it is a bit polluted and has a long load time.
-
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.
 ;; function immediately runs switch-keyboard-layout which provides message!
 ;; (kbd-layouts:keyboard-layout-list "us")
+;; (setf kbd-layouts:*caps-lock-behavior* :ctrl)
+
 
 ;;;  Defaults s-SPC for this command, reset & set this to prefix-key below!
 (define-key *top-map* (kbd "s-k") "switch-keyboard-layout")
@@ -24,27 +23,76 @@
 ;;; Enable which-key
 (which-key-mode)
 
-;;; Audio/Mic Controls
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "wpctl-volume-up")
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "wpctl-volume-down")
-(define-key *top-map* (kbd "XF86AudioMute") "wpctl-toggle-mute")
-(define-key *top-map* (kbd "XF86AudioMicMute") "wpctl-source-toggle-mute")
-
-;;; Brightness Controls
+;; Brightness Control parameters
 (setf swm-brightness:*step* 10)
-(define-key *top-map* (kbd "XF86MonBrightnessUp")
-  "increase-brightness")
-
-(define-key *top-map* (kbd "XF86MonBrightnessDown")
-  "decrease-brightness")
 
 
-;;; Groups
-(define-key *top-map* (kbd "s-1") "gselect 1")
-(define-key *top-map* (kbd "s-2") "gselect 2")
-(define-key *top-map* (kbd "s-3") "gselect 3")
-(define-key *top-map* (kbd "s-4") "gselect 4")
-(define-key *top-map* (kbd "s-5") "gselect 5")
+;;; Keymaps
+;;; Ref: https://github.com/stumpwm/stumpwm/issues/480
+
+;; Reference of others keybinding configs
+;; https://systemcrafters.net/live-streams/december-3-2021/
+;; https://github.com/aartaka/stumpwm-config
+
+(defun update-keymap (keymap bindings)
+  "Helper function to update desired StumpWM KEY-MAP."
+  (loop :for (binding command) :in bindings
+        :do (define-key keymap (kbd binding) command)))
+
+(defvar *kbds-top-map* 
+  `(;; Audio/Mic Controls
+    ("XF86AudioRaiseVolume" "wpctl-volume-up")
+    ("XF86AudioLowerVolume" "wpctl-volume-down")
+    ("XF86AudioMute"        "wpctl-toggle-mute")
+    ("XF86AudioMicMute"     "wpctl-source-toggle-mute")
+
+    ;; Brightness Controls
+    ("XF86MonBrightnessUp"   "increase-brightness")
+    ("XF86MonBrightnessDown" "decrease-brightness")
+
+    ;; Window/Frame Groups
+    ("s-1" "gselect 1")
+    ("s-2" "gselect 2")
+    ("s-3" "gselect 3")
+    ("s-4" "gselect 4")
+    ("s-5" "gselect 5")
+
+    ;; Window/Frame Controls
+    ("s-r" "iresize")
+    ("s-f" "fullscreen")
+    ("s-q" "delete")
+    ("C-s-1" "gmove HOME")
+    ("C-s-2" "gmove DEV")
+    ("C-s-3" "gmove WWW")
+    ("C-s-4" "gmove ETC")
+    ("C-s-5" "gmove PRIV")
+
+    ;; Other (to be defined)
+    ("s-h" ,*help-map*)
+    ("s-g" ,*groups-map*)))
+
+(defvar *kbds-root-map* 
+  `(;; base root keybindings
+    ("h" ,*help-map*)
+    ("g" ,*groups-map*)
+    (":" "eval")
+    ("!" "exec")
+    ("k" "delete")
+    ("C-k" "delete")))
+
+;; Clear & Update prefix-key maps
+;; see bindings.lisp for reference to originally defined maps
+(defvar *root-map-bak* *root-map*)
+(defvar *group-root-map-bak* stumpwm::*group-root-map*)
+(defvar *tile-group-root-map-bak* stumpwm::*tile-group-root-map*)
+
+(setf *root-map* (make-sparse-keymap)
+      stumpwm::*group-root-map* (make-sparse-keymap)
+      stumpwm::*tile-group-root-map* (make-sparse-keymap))
+
+(update-keymap *top-map*  *kbds-top-map*)
+(update-keymap *root-map* *kbds-root-map*)
+
 
 ;;; Applications
 (defvar *my-applications-keymap*
@@ -119,7 +167,7 @@
 (define-key *root-map* (kbd "B") '*bluetooth-keymap*)
 
 ;;; Slynk/Swank Server Controls
-(asdf:load-systems :slynk :micros)
+;; (asdf:load-systems :slynk :micros)
 
 (defvar *stumpwm-port* 4005
   "Default port to establish a connection to either slynk or micros")
