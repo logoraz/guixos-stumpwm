@@ -1,0 +1,11 @@
+[Default Applications]
+image/bmp=feh.desktop;gimp.desktop;
+image/gif=feh.desktop;gimp.desktop;
+image/jpeg=feh.desktop;gimp.desktop;
+image/jpg=feh.desktop;gimp.desktop;
+image/png=feh.desktop;gimp.desktop;
+image/tiff=feh.desktop;gimp.desktop;
+image/webp=feh.desktop;gimp.desktop;
+image/heic=feh.desktop;gimp.desktop;
+
+[Added Associations]

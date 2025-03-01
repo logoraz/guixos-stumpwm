@@ -58,9 +58,9 @@
     ("s-5" "gselect 5")
 
     ;; Window/Frame Controls
-    ("s-r" "iresize")
-    ("s-f" "fullscreen")
-    ("s-q" "delete")
+    ("s-r"   "iresize")
+    ("s-f"   "fullscreen")
+    ("s-q"   "delete")
     ("C-s-1" "gmove HOME")
     ("C-s-2" "gmove DEV")
     ("C-s-3" "gmove WWW")
@@ -73,12 +73,18 @@
 
 (defvar *kbds-root-map* 
   `(;; base root keybindings
-    ("h" ,*help-map*)
-    ("g" ,*groups-map*)
-    (":" "eval")
-    ("!" "exec")
-    ("k" "delete")
-    ("C-k" "delete")))
+    (":"       "eval")
+    ("!"       "exec")
+    ("k"       "delete")
+    ("C-k"     "delete")
+    ("h"       "vsplit")
+    ("v"       "hsplit")
+    ("x"       "remove-split")
+    ("r"       "iresize")
+    ("M-Up"    "move-window up")
+    ("M-Down"  "move-window down")
+    ("M-Left"  "move-window left")
+    ("M-Right" "move-window right")))
 
 ;; Clear & Update prefix-key maps
 ;; see bindings.lisp for reference to originally defined maps
