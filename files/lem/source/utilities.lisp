@@ -1,7 +1,7 @@
-(defpackage :lem-config/utilities
-  (:use :cl 
+(defpackage #:lem-config/utilities
+  (:use #:cl 
         :lem))
-(in-package :lem-config/utilities)
+(in-package #:lem-config/utilities)
 
 
 (defvar *lisp-implementations* (list  "sbcl" "ecl" "ccl"))

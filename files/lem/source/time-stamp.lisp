@@ -1,11 +1,11 @@
 ;; brorrowed from https://github.com/vindarel/lem-init
 
-(defpackage :lem-config/time-stamp
-  (:use :cl 
+(defpackage #:lem-config/time-stamp
+  (:use #:cl 
         :lem)
   (:export #:*time-stamp-format*
            #:time-stamp))
-(in-package :lem-config/time-stamp)
+(in-package #:lem-config/time-stamp)
 
 
 (defvar *time-stamp-format*

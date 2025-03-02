@@ -1,14 +1,15 @@
-(defpackage :lem-config/appearance
-  (:use :cl 
+(defpackage #:lem-config/appearance
+  (:use #:cl 
         :lem)
   (:export #:set-opacity
            #:toggle-opacity))
-(in-package :lem-config/appearance)
+(in-package #:lem-config/appearance)
 
-(defconstant +regular-font+
+
+(defparameter *regular-font*
   #P"/home/logoraz/.local/share/fonts/FiraCodeNerdFontMono-Regular.ttf")
 
-(defconstant +bold-font+
+(defparameter *bold-font*
   #P"/home/logoraz/.local/share/fonts/FiraCodeNerdFontMono-Bold.ttf")
 
 (defvar *opaquep* nil
@@ -50,8 +51,8 @@
 ;; FIX: figure out how to get icon sets display in C-x d
 ;;#+lem-sdl2
 ;; (ignore-errors
-;;   (let ((font-regular +regular-font+)
-;;         (font-bold +bold-font+))
+;;   (let ((font-regular *regular-font*)
+;;         (font-bold *bold-font*))
 ;;     (if (and (uiop:file-exists-p font-regular)
 ;;              (uiop:file-exists-p font-bold))
 ;;         (lem-sdl2/display:change-font (lem-sdl2/display:current-display)
