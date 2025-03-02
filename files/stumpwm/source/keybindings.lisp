@@ -1,6 +1,8 @@
 (defpackage #:swm-config/keybindings
   (:use #:cl
-        :stumpwm))
+        :stumpwm)
+  (:import-from #:iterate
+                #:iter #:for #:in #:collect))
 (in-package #:swm-config/keybindings)
 
 ;;; Enable multiple keyboard layouts (English and TBD)
@@ -35,9 +37,15 @@
 ;; https://github.com/aartaka/stumpwm-config
 
 (defun update-keymap (keymap bindings)
-  "Helper function to update desired StumpWM KEY-MAP."
-  (loop :for (binding command) :in bindings
-        :do (define-key keymap (kbd binding) command)))
+  "Helper function to update desired StumpWM KEY-MAP using iterate."
+  (iter (for (binding command) in bindings)
+    (define-key keymap (kbd binding) command)))
+
+;; Keep for comparison to cl:loop
+;; (defun update-keymap (keymap bindings)
+;;   "Helper function to update desired StumpWM KEY-MAP."
+;;   (loop :for (binding command) :in bindings
+;;         :do (define-key keymap (kbd binding) command)))
 
 (defvar *kbds-top-map* 
   `(;; Audio/Mic Controls
@@ -76,7 +84,7 @@
     (":"       "eval")
     ("!"       "exec")
     ("k"       "delete")
-    ("C-k"     "delete")
+    ;; ("C-k"     "delete") these do the same thing...
     ("h"       "vsplit")
     ("v"       "hsplit")
     ("x"       "remove-split")
