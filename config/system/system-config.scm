@@ -87,6 +87,7 @@
    '((with-latest . "sbcl"))))
 
 (define %stumpwm-packages
+;; TODO: Organize and sort out modules/depencies...
   (list
    sbcl
    stumpwm-dev+servers ;; custom package

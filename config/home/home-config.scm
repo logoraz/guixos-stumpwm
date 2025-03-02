@@ -68,7 +68,8 @@
    cl-trivial-types
    cl-closer-mop
    cl-bordeaux-threads ;; duplicate (for dev purposes)
-   cl-lparallel))
+   cl-lparallel
+   cl-iterate))
 
 (define %logoraz-packages
   (list

@@ -74,7 +74,6 @@ Laptop.
              |- swm-screenshot/
              |- swm-bluetooth/
              |- swm-brightness/
-             |- wip-swm-notify/
              |- wip-swm-nmctl/
        |- xorg/...
        |- zathura/...
