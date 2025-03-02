@@ -25,8 +25,8 @@
 (define (home-xdg-local-files-gexp-service config)
   `(;; XDG Default Applications
     ;; ref: https://specifications.freedesktop.org/mime-apps-spec/latest/default.html
-    ("mimeapps.list"
-     ,(home-file "files/xorg" "mimeapps.list"))
+    ;; ("mimeapps.list"
+    ;;  ,(home-file "files/xorg" "mimeapps.list"))
 
     ;; GnuPG Configuration
     ("gnupg/gpg-agent.conf"

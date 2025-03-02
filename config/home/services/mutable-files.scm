@@ -46,6 +46,12 @@
        "files/stumpwm/source"))
 
     ;; Xorg/XDG Configuration Scaffolding
+    ;; TODO: move to xdg-files.scm once established.
+    (".config/mimeapps.list"
+     ,(string-append
+       *home-path*
+       "files/xorg/mimeapps.list"))
+
     (".Xdefaults"
      ,(string-append
        *home-path*

@@ -91,6 +91,7 @@
   (list
    sbcl
    stumpwm-dev+servers ;; custom package
+   sbcl-iterate
    sbcl-parse-float ;;|--> gnu packages lisp-xyz
    sbcl-local-time
    sbcl-cl-ppcre
