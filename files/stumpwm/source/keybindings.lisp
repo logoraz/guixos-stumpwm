@@ -3,12 +3,12 @@
         :stumpwm))
 (in-package #:swm-config/keybindings)
 
+
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.
 ;; function immediately runs switch-keyboard-layout which provides message!
 ;; (kbd-layouts:keyboard-layout-list "us")
 ;; (setf kbd-layouts:*caps-lock-behavior* :ctrl)
-
 
 ;;;  Defaults s-SPC for this command, reset & set this to prefix-key below!
 (define-key *top-map* (kbd "s-k") "switch-keyboard-layout")
@@ -128,6 +128,7 @@
     key-map))
 (define-key *root-map* (kbd "C-t") '*my-xorg-keymap*)
 
+
 ;;; Screenshots
 (defvar *my-screenshot-keymap*
   (let ((key-map (make-sparse-keymap)))
@@ -137,6 +138,7 @@
     key-map))
 (define-key *root-map* (kbd "V") '*my-screenshot-keymap*)
 (define-key *top-map* (kbd "Print") '*my-screenshot-keymap*)
+
 
 ;;; Session Controls (swm-end-session)
 ;; Screensaver command for slock
@@ -169,9 +171,8 @@
     key-map))
 (define-key *root-map* (kbd "B") '*bluetooth-keymap*)
 
-;;; Slynk/Swank Server Controls
-;; (asdf:load-systems :slynk :micros)
 
+;;; Slynk/Swank Server Controls
 (defvar *stumpwm-port* 4005
   "Default port to establish a connection to either slynk or micros")
 
