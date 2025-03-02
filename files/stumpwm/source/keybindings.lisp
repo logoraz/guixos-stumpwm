@@ -1,8 +1,6 @@
 (defpackage #:swm-config/keybindings
   (:use #:cl
-        :stumpwm)
-  (:import-from #:iterate
-                #:iter #:for #:in #:collect))
+        :stumpwm))
 (in-package #:swm-config/keybindings)
 
 ;;; Enable multiple keyboard layouts (English and TBD)
@@ -37,15 +35,9 @@
 ;; https://github.com/aartaka/stumpwm-config
 
 (defun update-keymap (keymap bindings)
-  "Helper function to update desired StumpWM KEY-MAP using iterate."
-  (iter (for (binding command) in bindings)
-    (define-key keymap (kbd binding) command)))
-
-;; Keep for comparison to cl:loop
-;; (defun update-keymap (keymap bindings)
-;;   "Helper function to update desired StumpWM KEY-MAP."
-;;   (loop :for (binding command) :in bindings
-;;         :do (define-key keymap (kbd binding) command)))
+  "Helper function to update desired StumpWM KEYMAP with BINDINGS."
+  (loop :for (binding command) :in bindings
+        :do (define-key keymap (kbd binding) command)))
 
 (defvar *kbds-top-map* 
   `(;; Audio/Mic Controls
@@ -103,8 +95,8 @@
 (defvar *tile-group-root-map-bak* stumpwm::*tile-group-root-map*
   "Backup for temporary purposes, to remove when refactor complete.")
 
-(setf *root-map* (make-sparse-keymap)
-      stumpwm::*group-root-map* (make-sparse-keymap)
+(setf *root-map*                     (make-sparse-keymap)
+      stumpwm::*group-root-map*      (make-sparse-keymap)
       stumpwm::*tile-group-root-map* (make-sparse-keymap))
 
 (update-keymap *top-map*  *kbds-top-map*)
