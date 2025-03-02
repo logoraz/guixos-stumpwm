@@ -88,9 +88,12 @@
 
 ;; Clear & Update prefix-key maps
 ;; see bindings.lisp for reference to originally defined maps
-(defvar *root-map-bak* *root-map*)
-(defvar *group-root-map-bak* stumpwm::*group-root-map*)
-(defvar *tile-group-root-map-bak* stumpwm::*tile-group-root-map*)
+(defvar *root-map-bak* *root-map*
+  "Backup for temporary purposes, to remove when refactor complete.")
+(defvar *group-root-map-bak* stumpwm::*group-root-map*
+  "Backup for temporary purposes, to remove when refactor complete.")
+(defvar *tile-group-root-map-bak* stumpwm::*tile-group-root-map*
+  "Backup for temporary purposes, to remove when refactor complete.")
 
 (setf *root-map* (make-sparse-keymap)
       stumpwm::*group-root-map* (make-sparse-keymap)
@@ -126,12 +129,6 @@
 (define-key *root-map* (kbd "C-t") '*my-xorg-keymap*)
 
 ;;; Screenshots
-;; TODO - determine how to preset location for screenshots so I don't have to
-;; type it in every time. Also, screenshot captures the stumpwm prompt as well...
-
-(defvar *my-screenshot-dir* "~/desktop/screenshots/"
-  "Path to custom screenshots directory.")
-
 (defvar *my-screenshot-keymap*
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "s") "screenshot")
