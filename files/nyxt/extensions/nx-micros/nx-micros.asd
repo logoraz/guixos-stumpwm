@@ -1,4 +1,4 @@
-(defsystem "nx-micros"
+(defsystem #:nx-micros
   :author "Erik P Almaraz"
   :license "BSD 3-clause"
   :version "0.0.1"

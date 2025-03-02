@@ -1,6 +1,6 @@
 ;;; Only for nxyt-3 or greater
-(nyxt:define-package :nx-micros)
-(in-package :nx-micros)
+(nyxt:define-package #:nx-micros)
+(in-package #:nx-micros)
 
 
 (defvar *micros-port* 4006

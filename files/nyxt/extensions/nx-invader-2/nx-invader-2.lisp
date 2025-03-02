@@ -11,8 +11,8 @@
 ;;; 2. Sourced Saved in ~/.local/share/nyxt/extensions/invader
 
 ;;; Only for nxyt-3 or greater
-(nyxt:define-package :nx-invader-2)
-(in-package :nx-invader-2)
+(nyxt:define-package #:nx-invader-2)
+(in-package #:nx-invader-2)
 
 ;;; Nord Color Palette
 (defvar raz-nord0 "#2e3440")   ; 'Black'

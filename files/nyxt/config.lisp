@@ -10,7 +10,7 @@
 ;;; 1. flatpak override --user --filesystem=/run/current-system/profile:ro
 ;;;    --filesystem=/gnu/store:ro engineer.atlas.Nyxt
 ;;;
-(in-package :nyxt-user)
+(in-package #:nyxt-user)
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
 ;;; everywhere...
@@ -38,9 +38,9 @@ loads."
   `(define-nyxt-user-system-and-load ,(gensym "NYXT-USER/")
      :depends-on (,system) ,@(when file `(:components (,file)))))
 
-(defextsystem :nx-invader-2)
-(defextsystem :nx-code)
-(defextsystem :nx-micros)
+(defextsystem #:nx-invader-2)
+(defextsystem #:nx-code)
+(defextsystem #:nx-micros)
 
 
 ;;; Hacks

@@ -1,6 +1,6 @@
 ;;; Experimental
 
-(defsystem "nx-code"
+(defsystem #:nx-code
   :description "Modern Emacs-like Editor/IDE for Nyxt."
   :author "Erik P Almaraz"
   :license "BSD 3-clause"

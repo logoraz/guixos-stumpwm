@@ -4,7 +4,6 @@
 ;;; Fix bug with save-new-password, fails to connect to database unless ether
 ;;; copy-username or copy-password has been invoked first
 
-(in-package #:nyxt/mode/password)
 ;; in mode/password
 (define-command save-new-password-dev (&optional (buffer (current-buffer)))
   "Save password to password interface."
