@@ -3,6 +3,7 @@
   :author "Erik P Almaraz <erikalmaraz@fastmail.com"
   :license "BSD-3 Clause"
   :version "0.0.2"
+  :serial t
   :depends-on ("stumpwm"
                ;; stumpwm-contrib modules
                "ttf-fonts"
@@ -20,7 +21,6 @@
                "swm-screenshot"
                "swm-bluetooth"
                "swm-brightness")
-  :serial t
   :pathname "source"
   :components ((:file "swm-config")
                (:file "syntax")
