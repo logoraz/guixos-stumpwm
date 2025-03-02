@@ -1,4 +1,4 @@
-(defsystem "swm-bluetooth"
+(defsystem #:swm-bluetooth
   :description "Provides simple interface to connect to Bluetooth."
   :author "Erik P Almaraz"
   :license "GPLv3"

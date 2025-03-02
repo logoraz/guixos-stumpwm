@@ -1,9 +1,9 @@
-(defpackage :swm-config/modeline
-  (:use :cl
+(defpackage #:swm-config/modeline
+  (:use #:cl
         :stumpwm
-        :swm-config/theme)
-  (:import-from :alexandria #:xor))
-(in-package :swm-config/modeline)
+        #:swm-config/theme)
+  (:import-from #:alexandria #:xor))
+(in-package #:swm-config/modeline)
 
 
 ;; The timeout of the modeline indicates how often it refreshes in seconds.

@@ -1,7 +1,7 @@
-(defpackage :swm-config/keybindings
-  (:use :cl
+(defpackage #:swm-config/keybindings
+  (:use #:cl
         :stumpwm))
-(in-package :swm-config/keybindings)
+(in-package #:swm-config/keybindings)
 
 ;;; Enable multiple keyboard layouts (English and TBD)
 ;; TODO - disable message for this, I don't want to see it at start up.

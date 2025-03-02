@@ -1,6 +1,6 @@
 ;;;; swm-nmctl.asd
 
-(defsystem "swm-nmctl"
+(defsystem #:swm-nmctl
   :description "Provides simple interface to connect to networks via nmcli"
   :author "Erik P Almaraz"
   :license "GPLv3"

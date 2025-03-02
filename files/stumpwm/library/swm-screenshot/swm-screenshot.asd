@@ -1,4 +1,4 @@
-(defsystem "swm-screenshot"
+(defsystem #:swm-screenshot
   :description "Takes screenshots and stores them as png files"
   :author "Erik P Almaraz, Michael Filonenko"
   :license "GPLv3"

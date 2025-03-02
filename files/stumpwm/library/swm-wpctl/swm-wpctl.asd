@@ -1,4 +1,4 @@
-(defsystem "swm-wpctl"
+(defsystem #:swm-wpctl
   :description "PipeWire (WirePlumber) volume and microphone control module for StumpWM"
   :author "Erik P Almaraz, Dmitrii Kosenkov"
   :license  "GPLv3"

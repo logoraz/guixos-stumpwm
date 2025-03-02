@@ -1,7 +1,7 @@
-(defpackage :swm-config/utilities
-  (:use :cl
+(defpackage #:swm-config/utilities
+  (:use #:cl
         :stumpwm))
-(in-package :swm-config/utilities)
+(in-package #:swm-config/utilities)
 
 
 ;;; Experimental stumpwm-contrib packages (to trial)

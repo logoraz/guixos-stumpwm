@@ -26,11 +26,11 @@
 ;;;
 
 
-(defpackage :swm-end-session
-  (:use :cl
+(defpackage #:swm-end-session
+  (:use #:cl
         :stumpwm)
   (:export #:*end-session-command*))
-(in-package :swm-end-session)
+(in-package #:swm-end-session)
 
 (defparameter *end-session-command* "loginctl")
 

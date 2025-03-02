@@ -1,10 +1,10 @@
-(defpackage :swm-config
-  (:use :cl
+(defpackage #:swm-config
+  (:use #:cl
         :stumpwm)
-  (:local-nicknames (#:re :ppcre))
+  (:local-nicknames (#:re #:ppcre))
   (:export #:*guix-system-path*
            #:*guix-home-path*))
-(in-package :swm-config)
+(in-package #:swm-config)
 
 
 ;;;; Set PATHs: modules & data directories, etc.

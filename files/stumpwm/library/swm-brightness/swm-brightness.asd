@@ -1,4 +1,4 @@
-(defsystem "swm-brightness"
+(defsystem #:swm-brightness
   :description "Provides simple commands interface to control and display brightness."
   :author "Erik P Almaraz"
   :license "GPLv3"

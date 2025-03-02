@@ -22,13 +22,15 @@
 ;;; 2. https://github.com/stumpwm/stumpwm-contrib/tree/master/util/stumpwm-nm
 
 
-(defpackage :swm-nmctl
-  (:use :cl
+(defpackage #:swm-nmctl
+  (:use #:cl
         :stumpwm)
-  (:import-from :foo/baz #:sym1 #:sym2)
-  (:local-nicknames (#:nickname :original-package-name))
+  (:import-from #:foo/baz
+                #:sym1
+                #:sym2)
+  (:local-nicknames (#:nickname #:original-package-name))
   (:export #:exsym1))
-(in-package :swm-nmctl)
+(in-package #:swm-nmctl)
 
 
 ;; TODO - create a stumpwm network manager tool/util for nmcli...

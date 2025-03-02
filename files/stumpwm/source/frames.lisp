@@ -1,8 +1,8 @@
-(defpackage :swm-config/frames
-  (:use :cl
+(defpackage #:swm-config/frames
+  (:use #:cl
         :stumpwm
-        :swm-config/theme))
-(in-package :swm-config/frames)
+        #:swm-config/theme))
+(in-package #:swm-config/frames)
 
 ;;; Window Groups & Placement
 (when *initializing*

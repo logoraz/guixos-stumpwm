@@ -1,7 +1,7 @@
-(defpackage :swm-config/theme
-  (:use :cl
+(defpackage #:swm-config/theme
+  (:use #:cl
         :stumpwm
-        :swm-config)
+        #:swm-config)
   (:export #:*nord00*
            #:*nord01*
            #:*nord02*
@@ -18,7 +18,7 @@
            #:*nord13*
            #:*nord14*
            #:*nord15*))
-(in-package :swm-config/theme)
+(in-package #:swm-config/theme)
 
 ;;; Fonts
 

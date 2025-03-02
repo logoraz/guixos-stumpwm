@@ -1,4 +1,4 @@
-(defsystem "swm-config"
+(defsystem #:swm-config
   :description "StumpWM config with batteries included!"
   :author "Erik P Almaraz <erikalmaraz@fastmail.com"
   :license "BSD-3 Clause"
