@@ -1,6 +1,7 @@
 (defpackage :swm-config
   (:use :cl
         :stumpwm)
+  (:local-nicknames (#:re :ppcre))
   (:export #:*guix-system-path*
            #:*guix-home-path*))
 (in-package :swm-config)
@@ -48,11 +49,27 @@
 (defvar *trackpadp* nil
   "Hold boolean state of trackpad.")
 
-;; (run-shell-command "xinput set-prop 12 185 0")
+;; WIP [Issue# 1]
 ;; Determine a way to dynamically find prop id as it seems to change when
 ;; devices are added, specifically wifi devices...
+(defun format-output (value)
+  "Format output string VALUE to remove superflous content."
+  (let* ((regexp "\\((.*?)\\)") ;; captures (#%), etc
+         (filter "[^()]+") ;; Filters captured string to remove parentheses.
+         (match (re:scan-to-strings regexp value))
+         (content (re:scan-to-strings filter match)))
+    content))
+
+(defun get-trackpad-id ()
+  "Dynamically retriev trackpad id from xinput"
+  (format-output
+   (run-shell-command "xinput")))
+
 (defvar *trackpad-command* "xinput set-prop 12 185"
   "Set xinput set-prop specifics to Enable/Disable trackpad...")
+
+;;
+;; END WIP
 
 (defun set-trackpad-state (&optional (state "0"))
   "Enable/Disable trackpad."

@@ -13,9 +13,8 @@
                "mem"
                "battery-portable"
                "wifi"
+               "nofify" ;; packaged w/ custom Guix StumpWM package recipe to work
                ;; modified stumpwm-contrib modules
-               ;; "sb-rotate-byte"
-               ;; "swm-notify"
                "swm-wpctl"
                "swm-end-session"
                "swm-screenshot"
