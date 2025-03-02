@@ -5,6 +5,7 @@
   :version "0.0.2"
   :serial t
   :depends-on ("stumpwm"
+               "iterate"
                ;; stumpwm-contrib modules
                "ttf-fonts"
                "swm-gaps"
