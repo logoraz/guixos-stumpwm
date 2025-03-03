@@ -11,6 +11,12 @@
 
 (define %gtk2-rc ".guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
 
+
+(define %xdg-data-dirs (string-append "$HOME/.guix-home/profile/share:"
+                                      "/run/current-system/profile/share:"
+                                      "/var/lib/flatpak/exports/share:"
+                                      "$XDG_DATA_HOME/flatpak/exports/share:"))
+
 (define (home-path directory)
   (string-append
    "/home"
@@ -42,7 +48,9 @@
     ("XDG_SESSION_DESKOP" . "stumpwm")
     ("XDG_CURRENT_DESKTOP" . "stumpwm")
     ("XDG_DOWNLOAD_DIR" . ,(home-path "Downloads"))
-    ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))))
+    ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))
+    ;; Flatpak integration
+    ("XDG_DATA_DIRS"    . ,%xdg-data-dirs)))
 
 
 (define home-env-vars-configuration-service-type

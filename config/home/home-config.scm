@@ -73,7 +73,7 @@
 
 (define %logoraz-packages
   (list
-   ;; StumpWM Utilities
+   ;; Addn StumpWM Utilities
 
    ;; Mail
    mu
@@ -82,6 +82,7 @@
 
    ;; Flatpak & XDG Utilities
    flatpak
+   flatpak-xdg-utils
    xdg-desktop-portal
    xdg-desktop-portal-gtk
    xdg-desktop-portal-kde
