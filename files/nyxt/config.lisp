@@ -14,16 +14,17 @@
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
 ;;; everywhere...
-(reset-asdf-registries)
+;; (reset-asdf-registries)
 
 (define-configuration buffer
     ((default-modes `(emacs-mode ,@%slot-value%))))
 
+;; TODO: setup as a nyxt extension?
 ;; Loading files from the same directory (~/.config/nyxt/).
-(define-nyxt-user-system-and-load nyxt-user/basic-config
-  :description "Nyxt Interface Configuration."
-  :components ("keepassxc-pwi"
-               "keepassxc-3431"))
+;; (define-nyxt-user-system-and-load nyxt-user/basic-config
+;;   :description "Nyxt Interface Configuration."
+;;   :components ("keepassxc-pwi"
+;;                "keepassxc-3431"))
 
 
 ;;; Nyxt Extensions
@@ -36,11 +37,11 @@ Loads a newly-generated ASDF system depending on SYSTEM.
 FILE, if provided, is loaded after the generated system successfully
 loads."
   `(define-nyxt-user-system-and-load ,(gensym "NYXT-USER/")
-     :depends-on (,system) ,@(when file `(:components (,file)))))
+                                     :depends-on (,system) ,@(when file `(:components (,file)))))
 
-(defextsystem #:nx-invader-2)
-(defextsystem #:nx-code)
-(defextsystem #:nx-micros)
+(defextsystem #:nx-nord-theme)
+;; (defextsystem #:nx-code)
+;; (defextsystem #:nx-micros)
 
 
 ;;; Hacks
@@ -50,3 +51,7 @@ loads."
                           (file nyxt/mode/bookmark:bookmarks-file))
   "Re-route bookmarks to the `.config/nyxt/' directory."
   #P"~/.config/nyxt/bookmarks.lisp")
+
+;; Hack to get rid of white echo-area
+;; (nyxt:execute-command (echo "Hello, Welcome to Nyxt Electron Version 4!"))
+;; (execute-command (nyxt-version))

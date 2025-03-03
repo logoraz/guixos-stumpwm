@@ -31,7 +31,8 @@
            (setf (password:password-file interface) *keepassxc-db*
                  (password:key-file interface) *keepassxc-kf*
                  (password:yubikey-slot interface) *yubikey-slot*
-                 (password:executable interface) *keepassxc-exe*))
+                 ;; (password:executable interface) *keepassxc-exe*)
+           )
 
 (define-configuration nyxt/mode/password:password-mode
   ((password-interface (make-instance 'password:keepassxc-interface))))
