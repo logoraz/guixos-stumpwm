@@ -2,14 +2,14 @@
 
 ;;; Commentary:
 ;;; Set buffer settings, password interface, Extensions & Hacks
-
-;;; References
-;;; 1. https://github.com/aartaka/nyxt-config/
-
+;;;
 ;;; Nyxt as a FlatPak on Guix
 ;;; 1. flatpak override --user --filesystem=/run/current-system/profile:ro
+;;;    --filesystem=/home/logoraz/.guix-home/profile:ro
 ;;;    --filesystem=/gnu/store:ro engineer.atlas.Nyxt
+;;; 2.flatpak info --show-permissions engineer.atlas.Nyxt-Electron
 ;;;
+
 (in-package #:nyxt-user)
 
 ;;; Reset ASDF registries to allow loading Lisp systems from
@@ -37,7 +37,7 @@ Loads a newly-generated ASDF system depending on SYSTEM.
 FILE, if provided, is loaded after the generated system successfully
 loads."
   `(define-nyxt-user-system-and-load ,(gensym "NYXT-USER/")
-                                     :depends-on (,system) ,@(when file `(:components (,file)))))
+     :depends-on (,system) ,@(when file `(:components (,file)))))
 
 (defextsystem #:nx-nord-theme)
 ;; (defextsystem #:nx-code)

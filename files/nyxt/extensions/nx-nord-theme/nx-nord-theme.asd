@@ -1,6 +1,3 @@
-;;; nx-invader-2
-;;;
-
 (defsystem #:nx-nord-theme
   :author "Erik P Almaraz"
   :license "GPLv3"

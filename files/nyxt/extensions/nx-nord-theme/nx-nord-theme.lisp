@@ -1,18 +1,17 @@
-;;; Only for nxyt-3 or greater
 (nyxt:define-package #:nx-nord-theme)
 (in-package #:nx-nord-theme)
 
 ;;; Nord Color Palette
-(defparameter *nord00* "#2e3440")   ; 'Black'
-(defparameter *nord01* "#3b4252")   ; "Dark Gray'
-(defparameter *nord02* "#434c5e")   ; 'Medium Gray'
-(defparameter *nord03* "#4c566a")   ; 'Gray'
-(defparameter *nord04* "#d8dee9")   ; 'Light grey'
-(defparameter *nord05* "#e5e9f0")   ; 'Off-white'
-(defparameter *nord06* "#eceff4")   ; 'White'
-(defparameter *nord07* "#8fbcbb")   ; 'Blue/Green'
-(defparameter *nord08* "#88c0d0")   ; 'Teal'
-(defparameter *nord09* "#81a1c1")   ; 'Blue/Gray'
+(defparameter *nord00* "#2e3440")  ; 'Black'
+(defparameter *nord01* "#3b4252")  ; "Dark Gray'
+(defparameter *nord02* "#434c5e")  ; 'Medium Gray'
+(defparameter *nord03* "#4c566a")  ; 'Gray'
+(defparameter *nord04* "#d8dee9")  ; 'Light grey'
+(defparameter *nord05* "#e5e9f0")  ; 'Off-white'
+(defparameter *nord06* "#eceff4")  ; 'White'
+(defparameter *nord07* "#8fbcbb")  ; 'Blue/Green'
+(defparameter *nord08* "#88c0d0")  ; 'Teal'
+(defparameter *nord09* "#81a1c1")  ; 'Blue/Gray'
 (defparameter *nord10* "#5e81ac")  ; 'Blue'
 (defparameter *nord11* "#bf616a")  ; 'Red'
 (defparameter *nord12* "#d08770")  ; 'Orange'
@@ -22,7 +21,7 @@
 
 
 ;;; Invader Theme
-(defparameter *nx-nord-theme*
+(defvar *nx-nord-theme*
   (make-instance 'theme:theme
                  :background-color-   "#303240"
                  :background-color    "#282A36"

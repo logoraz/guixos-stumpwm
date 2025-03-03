@@ -1,5 +1,4 @@
 ;;; Experimental
-
 (defsystem #:nx-code
   :description "Modern Emacs-like Editor/IDE for Nyxt."
   :author "Erik P Almaraz"
