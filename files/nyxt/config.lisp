@@ -4,11 +4,13 @@
 ;;; Set buffer settings, password interface, Extensions & Hacks
 ;;;
 ;;; Nyxt as a FlatPak on Guix
-;;; 1. flatpak override --user --filesystem=/run/current-system/profile:ro
-;;;    --filesystem=/home/logoraz/.guix-home/profile:ro
-;;;    --filesystem=/gnu/store:ro engineer.atlas.Nyxt
-;;; 2.flatpak info --show-permissions engineer.atlas.Nyxt-Electron
 ;;;
+;;; 1. flatpak --user install <path/to/engineer.atlas.Nyxt-Electron
+;;;
+;;; 3. flatpak --user install com.github.tchx84.Flatseal
+;;;
+;;; 2. flatpak info --show-permissions engineer.atlas.Nyxt-Electron
+
 
 (in-package #:nyxt-user)
 
