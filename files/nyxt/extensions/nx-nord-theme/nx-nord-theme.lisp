@@ -4,7 +4,7 @@
 ;;; Nord Color Palette
 ;; Tool used to add colors variation https://mdigi.tools/color-shades/#44475a
 
-(defparameter *nord00-* "#333544")  ;; '- (darker)'
+(defparameter *nord00-* "#242831")  ;; '- (darker)'
 (defparameter *nord00=* "#2e3440")  ;; '= (base)'     Black
 (defparameter *nord01=* "#3b4252")  ;; "= (base)'     Dark Gray
 (defparameter *nord02=* "#434c5e")  ;; '= (base)'     Med Gray

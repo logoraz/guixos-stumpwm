@@ -21,10 +21,11 @@
 
 ;; TODO: setup as a nyxt extension?
 ;; Loading files from the same directory (~/.config/nyxt/).
-;; (define-nyxt-user-system-and-load nyxt-user/basic-config
-;;   :description "Nyxt Interface Configuration."
-;;   :components ("keepassxc-pwi"
-;;                "keepassxc-3431"))
+#-nyxt-4
+(define-nyxt-user-system-and-load nyxt-user/basic-config
+  :description "Nyxt Interface Configuration."
+  :components ("keepassxc-pwi"
+               "keepassxc-3431"))
 
 
 ;;; Nyxt Extensions
@@ -40,8 +41,8 @@ loads."
      :depends-on (,system) ,@(when file `(:components (,file)))))
 
 (defextsystem #:nx-nord-theme)
-;; (defextsystem #:nx-code)
-;; (defextsystem #:nx-micros)
+(defextsystem #:nx-code)
+(defextsystem #:nx-micros)
 
 
 ;;; Hacks
