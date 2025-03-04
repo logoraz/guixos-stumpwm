@@ -111,6 +111,7 @@
     (define-key key-map (kbd "x") "exec ~/.config/xorg/start-xterm.sh")
     (define-key key-map (kbd "b") "exec flatpak run app.zen_browser.zen")
     (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt-Electron")
+    (define-key key-map (kbd "f") "exec flatpak run com.github.tchx84.Flatseal")
     (define-key key-map (kbd "k") "exec keepassxc")
     (define-key key-map (kbd "c") "exec gnucash")
     (define-key key-map (kbd "g") "exec gimp")
