@@ -56,5 +56,8 @@ loads."
   #P"~/.config/nyxt/bookmarks.lisp")
 
 ;; Hack to get rid of white echo-area
-;; (nyxt:execute-command (echo "Hello, Welcome to Nyxt Electron Version 4!"))
-;; (execute-command (nyxt-version))
+;; This still crashes: See https://github.com/atlas-engineer/nyxt/issues/3620
+;; (define-configuration browser
+;;   ((window-make-hook
+;; 	(hooks:add-hook %slot-value% (lambda (_)
+;;           (echo "")))))
