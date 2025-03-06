@@ -41,18 +41,18 @@
 (define %guixos-swap-devices
   (list (swap-space
          (target
-          (uuid "0bf14f0b-3a99-439c-8ee0-130ce0792694")))))
+          (uuid "08b16346-aa6b-4744-9856-6070d78e38ca")))))
 
 (define %guixos-file-systems
   ;; Use 'blkid' to find unique file system identifiers ("UUIDs").
   (cons* (file-system
           (mount-point  "/boot/efi")
-          (device (uuid "645B-9C47"
+          (device (uuid "F8E9-9C22"
 			'fat32))
           (type "vfat"))
          (file-system
           (mount-point "/")
-          (device (uuid "3d82108c-2c00-4238-b775-9f0c8894a638"
+          (device (uuid "872f93f3-bcb4-4907-bb4c-d6002496d3a8"
 			'ext4))
           (type "ext4"))
 	 %base-file-systems))
@@ -230,7 +230,7 @@
 (define guixos-stumpwm
   (operating-system
    ;; (inherit %base-system)
-   (host-name "heizenberg")
+   (host-name "locutus")
    (timezone "America/Los_Angeles")
    (locale "en_US.utf8")
    (keyboard-layout %guixos-keyboard-layout)
@@ -241,7 +241,7 @@
    (initrd microcode-initrd)
    ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
    ;; for Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB) Laptop.
-   ;; (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
+   (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
 
    (bootloader %guixos-bootloader)
 

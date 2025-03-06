@@ -9,8 +9,10 @@ is ready for use!
   <img src="files/assets/graphics/yin-yang-lisp-logo_512_svg.png" width="200" />
 </p>
 
-This is specifically setup and trailed with my Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB)
-Laptop.
+
+GuixOS [Cr]ystallized [Mo]mentum has be successfully installed/trialed on the following:
+ - Lenovo ThinkPad X1 Carbon 4th Gen (Type 20FB) Laptop (initial work)
+ - Lenovo ThinkPad E15 4th Gen (newest faster laptop, future work)
 
 
 ## Screenshots
@@ -46,6 +48,7 @@ Laptop.
           |- tbd
        |- system/                            ;; GuixOS Config Root
           |- system-config.scm               ;; ** GuixOS StumpWM System Config **
+          |- system-config-locutus.scm
           |- channels.scm
     |- files/                                ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
        |- assets/...
@@ -138,7 +141,9 @@ information:
 Note: I am currently working to generalize this to define machine and user
 specific variables in one place...
 
-Now we are ready to install GuixOS StumpWM ("Crystallized Momentum"):
+Now we are ready to install GuixOS StumpWM ("Crystallized Momentum"), enter
+the following command when logged into your initial WM (my case EXWM) using
+eshell (doesn't work in a TTY perhaps need to pass sudo -E):
 
 ```bash
 
