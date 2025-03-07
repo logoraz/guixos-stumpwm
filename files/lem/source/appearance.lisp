@@ -41,11 +41,8 @@
                                      :file-count 7
                                      :hide-links t)
 
-;;; Commands
-(define-command open-init-file () ()
-  ;; @sasanidas
-  (lem:find-file
-   (merge-pathnames "init.lisp" (lem-home))))
+;; TODO: Make Scratch Buffer with lisp-mode and paredit major/minor modes enabled...
+(defparameter +scratch-buffer-name+ "*scratch*")
 
 ;; Use FiraCode Nerd fonts
 ;; FIX: figure out how to get icon sets display in C-x d

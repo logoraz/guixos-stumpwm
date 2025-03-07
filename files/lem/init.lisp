@@ -1,8 +1,5 @@
-;;; Erik P Almaraz (aka logoraz)
-;;; Ref: https://github.com/fukamachi/.lem
-;;; Ref: https://codeberg.org/sasanidas/lem-config/
 ;;; Ref: https://github.com/garlic0x1/.lem/
-
+;;; Ref: https://github.com/fukamachi/.lem
 (defpackage #:lem-config
   (:use #:cl 
         :lem))

@@ -14,3 +14,10 @@
 ;; (defun list-installed-implementations ()
 ;;   (when (exist-program-p "sbcl")
 ;;     (list "sbcl" "ecl" "ccl")))
+
+;;; Commands
+(define-command open-init-file () ()
+  ;; @sasanidas
+  (lem:find-file
+   (merge-pathnames "init.lisp" (lem-home))))
+
