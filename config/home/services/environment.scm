@@ -15,7 +15,7 @@
 (define %xdg-data-dirs (string-append "$HOME/.guix-home/profile/share:"
                                       "/run/current-system/profile/share:"
                                       "/var/lib/flatpak/exports/share:"
-                                      "$XDG_DATA_HOME/flatpak/exports/share:"))
+                                      "$XDG_DATA_HOME/flatpak/exports/share"))
 
 (define (home-path directory)
   (string-append
@@ -32,8 +32,8 @@
     ("EDITOR" . "emacs")
     ("VISUAL" . "emacs")
 
-    ;; Set quotebrowser as the default
-    ("BROWSER" . "zen")
+    ;; Set the default browser
+    ("BROWSER" . "nyxt")
 
     ;; Set GnuPG Config Dir env
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
