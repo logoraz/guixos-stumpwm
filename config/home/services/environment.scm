@@ -39,16 +39,17 @@
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
 
     ;; GTK & Xorg
-    ("GTK_THEME" . "Adwaita:dark")
+    ("GTK_THEME"     . "Adwaita:dark")
     ("XCURSOR_THEME" . "XCursor-Pro-Dark")
-    ("XCURSOR_SIZE" . "16")
+    ("XCURSOR_SIZE"  . "16")
 
     ;; Set XDG environment variables
-    ("XDG_SESSION_TYPE" . "x11")
-    ("XDG_SESSION_DESKOP" . "stumpwm")
+    ("XDG_SESSION_TYPE"    . "x11")
+    ("XDG_SESSION_DESKOP"  . "stumpwm")
     ("XDG_CURRENT_DESKTOP" . "stumpwm")
-    ("XDG_DOWNLOAD_DIR" . ,(home-path "Downloads"))
-    ("XDG_PICTURES_DIR" . ,(home-path "Pictures/Screenshots"))
+    ("XDG_DOWNLOAD_DIR"    . "$HOME/Downloads")
+    ("XDG_PICTURES_DIR"    . "$HOME/Pictures/Screenshots")
+
     ;; Flatpak integration
     ("XDG_DATA_DIRS"    . ,%xdg-data-dirs)))
 
