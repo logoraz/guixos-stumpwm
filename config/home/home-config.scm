@@ -99,6 +99,7 @@
    breeze-icons ;; for KDE apps
    gnome-themes-extra
    bibata-cursor-theme
+   gsettings-desktop-schemas
 
    ;; Fonts
    font-fira-code
@@ -147,6 +148,7 @@
    blender
 
    ;; Utilities
+   blueman
    udiskie
    network-manager-applet
    trash-cli))

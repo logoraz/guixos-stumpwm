@@ -47,11 +47,6 @@
 
     ;; Xorg/XDG Configuration Scaffolding
     ;; TODO: move to xdg-files.scm once established.
-    (".config/mimeapps.list"
-     ,(string-append
-       *home-path*
-       "files/xorg/mimeapps.list"))
-
     (".Xdefaults"
      ,(string-append
        *home-path*
@@ -66,6 +61,16 @@
      ,(string-append
        *home-path*
        "files/xorg/dot-icons"))
+
+    (".config/mimeapps.list"
+     ,(string-append
+       *home-path*
+       "files/xorg/mimeapps.list"))
+
+    (".config/gtk-3.0/settings.ini"
+     ,(string-append
+       *home-path*
+       "files/xorg/settings.ini"))
 
     (".config/xorg/start-xterm.sh"
      ,(string-append

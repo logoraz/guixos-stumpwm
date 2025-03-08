@@ -154,6 +154,7 @@
    xsel
    xss-lock
    xmodmap
+   xsettingsd
 
    ;; Fonts
    font-hack
