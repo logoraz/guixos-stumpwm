@@ -1,9 +1,9 @@
 ;;; ref - @vindarel (https://github.com/vindarel/lem-init)
 
-(defpackage #:lem-config/completions
+(defpackage #:lem-config/source/completions
   (:use #:cl 
         :lem))
-(in-package #:lem-config/completions)
+(in-package #:lem-config/source/completions)
 
 
 ;; Choose the position of the completion prompt (new in May, 2024)

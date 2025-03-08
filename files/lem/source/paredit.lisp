@@ -1,9 +1,9 @@
 ;;; Borrowed from @gavinok (https://github.com/Gavinok/.lem)
 
-(defpackage #:lem-config/paredit
+(defpackage #:lem-config/source/paredit
   (:use #:cl 
         :lem))
-(in-package #:lem-config/paredit)
+(in-package #:lem-config/source/paredit)
 
 
 (add-hook *find-file-hook*

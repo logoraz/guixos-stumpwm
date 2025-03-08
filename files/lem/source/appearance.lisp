@@ -1,9 +1,9 @@
-(defpackage #:lem-config/appearance
+(defpackage #:lem-config/source/appearance
   (:use #:cl 
         :lem)
   (:export #:set-opacity
            #:toggle-opacity))
-(in-package #:lem-config/appearance)
+(in-package #:lem-config/source/appearance)
 
 
 (defparameter *regular-font*
@@ -37,10 +37,18 @@
 
 ;; Dashboard
 ;; (setf lem-dashboard:*dashboard-enable* nil)
-(lem-dashboard:set-default-dashboard :project-count 3 
+(define-command lisp-scratch-2 () ()
+  "Define lisp-scratch buffer that enables paredit mode straight away!"
+  (let ((buffer (primordial-buffer)))
+    (change-buffer-mode buffer 'lem-lisp-mode:lisp-mode)
+    (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t)
+    (switch-to-buffer buffer)))
+
+(lem-dashboard:set-default-dashboard :project-count 3
                                      :file-count 7
                                      :hide-links t)
 
+(define-key lem-dashboard:*dashboard-mode-keymap* "l" 'lisp-scratch-2)
 
 ;; Use FiraCode Nerd fonts
 ;; FIX: figure out how to get icon sets display in C-x d

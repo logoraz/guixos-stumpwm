@@ -1,7 +1,8 @@
-(defpackage #:lem-config/utilities
+(defpackage #:lem-config/source/utilities
   (:use #:cl 
-        :lem))
-(in-package #:lem-config/utilities)
+        :lem)
+  (:export #:open-init-file))
+(in-package #:lem-config/source/utilities)
 
 
 (defvar *lisp-implementations* (list  "sbcl" "ecl" "ccl"))
@@ -21,8 +22,3 @@
   (lem:find-file
    (merge-pathnames "init.lisp" (lem-home))))
 
-(define-command lisp-scratch-2 () ()
-  (let ((buffer (primordial-buffer)))
-    (change-buffer-mode buffer 'lem-lisp-mode:lisp-mode)
-    (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t)
-    (switch-to-buffer buffer)))
