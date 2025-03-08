@@ -15,7 +15,7 @@
 (define %xdg-data-dirs (string-append "$HOME/.guix-home/profile/share:"
                                       "/run/current-system/profile/share:"
                                       "/var/lib/flatpak/exports/share:"
-                                      "$XDG_DATA_HOME/flatpak/exports/share"))
+                                      "$XDG_DATA_HOME/flatpak/exports/share:"))
 
 (define (home-path directory)
   (string-append
