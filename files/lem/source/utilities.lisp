@@ -21,3 +21,8 @@
   (lem:find-file
    (merge-pathnames "init.lisp" (lem-home))))
 
+(define-command lisp-scratch-2 () ()
+  (let ((buffer (primordial-buffer)))
+    (change-buffer-mode buffer 'lem-lisp-mode:lisp-mode)
+    (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t)
+    (switch-to-buffer buffer)))

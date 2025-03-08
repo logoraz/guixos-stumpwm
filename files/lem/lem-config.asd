@@ -4,8 +4,8 @@
   :version "0.0.1"
   :description "Lem Configuration."
   :depends-on ()
-  :pathname "source"
   :serial t
+  :pathname "source"
   :components ((:file "appearance")
                (:file "paredit")
                (:file "completions")

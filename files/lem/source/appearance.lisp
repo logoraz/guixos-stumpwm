@@ -41,8 +41,6 @@
                                      :file-count 7
                                      :hide-links t)
 
-;; TODO: Make Scratch Buffer with lisp-mode and paredit major/minor modes enabled...
-(defparameter +scratch-buffer-name+ "*scratch*")
 
 ;; Use FiraCode Nerd fonts
 ;; FIX: figure out how to get icon sets display in C-x d
