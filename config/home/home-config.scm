@@ -25,15 +25,13 @@
  shellutils pdf glib enchant pulseaudio
  lisp lisp-xyz lisp-check maths wm
  freedesktop kde-frameworks
- ssh cups suckless networking package-management)
+ ssh cups suckless networking package-management
+ commencement base)
 
 
 ;;; Package & Transformations
 ;;; https://guix.gnu.org/manual/en/html_node/Defining-Package-Variants.html
-(define latest-nyxt
-  (options->transformation
-   '((without-tests . "nyxt")
-     (with-latest   . "nyxt"))))
+
 
 ;;; Packages
 (define %guile-packages
@@ -46,6 +44,11 @@
    ecl
    ccl
    ;; clasp (!!)
+
+   ;; Dev Tools for CFFI stuff
+   gcc-toolchain
+   binutils
+   make
 
    ;; CL Foundation
    maxima
