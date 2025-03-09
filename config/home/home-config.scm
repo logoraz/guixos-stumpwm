@@ -52,6 +52,8 @@
    cl-clog
    cl-sketch
    cl-hunchentoot
+   cl-hunchensocket
+   cl-usocket
    cl-easy-routes
    cl-djula
    cl-clack
