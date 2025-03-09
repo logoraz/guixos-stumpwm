@@ -12,4 +12,4 @@ files/lem/history/
 files/lem/config.lisp
 
 # Nyxt
-files/extensions/tbd
+files/nyxt/bookmarks.lisp
