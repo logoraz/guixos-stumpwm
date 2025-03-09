@@ -21,6 +21,7 @@
 (:url "https://issues.guix.gnu.org/" :title "Guix issue tracker" :date "2024-08-11T15:47:51.773885Z" :tags ("Guix"))
 (:url "https://iterate.common-lisp.dev/doc/Don_0027t-Loop-Iterate.html#Don_0027t-Loop-Iterate" :title "Don't Loop Iterate - The Iterate Manual" :date "2025-02-09T23:28:41.391768Z" :tags ("Lisp2"))
 (:url "https://lepiller.eu/en/how-to-fix-the-issue-with-ca-certificates-in-guix.html" :title "How to fix the issue with CA certificates in Guix — Julien Lepiller" :date "2025-02-16T00:26:06.029196Z" :tags ("software"))
+(:url "https://lisp-lang.org/style-guide/" :title "Common Lisp Style Guide" :date "2025-03-09T15:16:06.460799Z" :tags ("Lisp2"))
 (:url "https://lisp-lang.org/style-guide/#variables" :title "Common Lisp Style Guide | Common Lisp" :date "2025-02-10T03:22:15.774113Z" :tags ("Lisp2"))
 (:url "https://lispcookbook.github.io/cl-cookbook/" :title "The Common Lisp Cookbook" :date "2025-02-01T05:51:06.673905Z" :tags ("Lisp2"))
 (:url "https://lispcookbook.github.io/cl-cookbook/testing.html" :title "Testing the code" :date "2025-02-08T02:46:06.289047Z" :tags ("Lisp2"))
