@@ -26,7 +26,7 @@
  lisp lisp-xyz lisp-check maths wm
  freedesktop kde-frameworks
  ssh cups suckless networking package-management
- commencement base)
+ commencement base tree-sitter)
 
 
 ;;; Package & Transformations
@@ -46,6 +46,7 @@
    ;; clasp (!!)
 
    ;; Dev Tools for CFFI stuff
+   tree-sitter
    gcc-toolchain
    binutils
    (specification->package "make")
