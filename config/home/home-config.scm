@@ -48,7 +48,7 @@
    ;; Dev Tools for CFFI stuff
    gcc-toolchain
    binutils
-   make
+   (specification->package "make")
 
    ;; CL Foundation
    maxima
