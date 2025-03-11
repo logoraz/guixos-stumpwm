@@ -59,7 +59,7 @@
   "Bluetooth message macro for commands."
   `(bluetooth-message (bluetooth-command ,@args)))
 
-;; TODO - Research more on `defstruct' data structures.
+;; TODO - Research more on `defstruct' &  CLOS -> implement in full CLOS
 (defstruct (bluetooth-device
             (:constructor make-bluetooth-device (&key (address "") (name nil)))
             (:constructor make-bluetooth-device-from-command

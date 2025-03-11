@@ -1,4 +1,4 @@
-;;;; swm-wpctl.lisp
+;;;; https://github.com/Junker/stumpwm-wpctl
 
 ;;; Copyright (C) 2023 Dmitrii Kosenkov
 ;;; Copyright (C) 2024 Erik P Almaraz <erikalmaraz@fastmail.com>
