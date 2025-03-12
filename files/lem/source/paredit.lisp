@@ -6,10 +6,18 @@
 (in-package #:lem-config/source/paredit)
 
 
+;; Enable paredit-mode in lisp-mode
 (add-hook *find-file-hook*
           (lambda (buffer)
             (when (eq (buffer-major-mode buffer) 'lem-lisp-mode:lisp-mode)
               (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t))))
+
+;; Enable paredit-mode in scheme-mode
+(add-hook *find-file-hook*
+          (lambda (buffer)
+            (when (eq (buffer-major-mode buffer) 'lem-scheme-mode:scheme-mode)
+              (change-buffer-mode buffer 'lem-paredit-mode:paredit-mode t))))
+
 
 ;; Paredit Mappings
 (define-key lem-paredit-mode:*paredit-mode-keymap* "Shift-Right"
