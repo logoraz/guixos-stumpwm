@@ -6,21 +6,23 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system asdf)
   #:use-module (guix utils)
+  #:use-module (guix transformations)
   #:use-module (gnu packages)
-  #:use-module (gnu packages commencement)
-  #:use-module (gnu packages base)
-  #:use-module (gnu packages build-tools)
   #:use-module (gnu packages lisp-check)
   #:use-module (gnu packages lisp-xyz)
-  #:use-module (gnu packages tree-sitter)
-  #:use-module (ice-9 match))
+  #:use-module (gnu packages tree-sitter))
 
 ;;; Note: generate new sha256/base32 via
 ;;; guix hash -x --serializer=nar .
 ;;; Get commit via git log
+
+(define latest-tree-sitter
+  (options->transformation
+   '((with-latest . "tree-sitter"))))
+
 (define-public sbcl-cl-treesitter
   (let ((commit "5bc751beb50cbf084cd19be4e32aaeb45ba55568")
-        (revision "49"))
+        (revision "4"))
     (package
      (name "sbcl-cl-treesitter")
      (version (git-version "0.0.0" revision commit))
@@ -30,9 +32,10 @@
        (uri (git-reference
              (url "https://github.com/garlic0x1/cl-treesitter")
              (commit commit)))
-       (file-name (git-file-name "cl-treesitter" version))
+       (file-name (git-file-name name version))
        (hash
-        (content-hash "0b6gwzd3w8z1v8r3s6j6w6kkjrm3sn6wsx3z5hsqcrpvnwvkdil4"))))
+        (content-hash 
+         "0b6gwzd3w8z1v8r3s6j6w6kkjrm3sn6wsx3z5hsqcrpvnwvkdil4"))))
      (build-system asdf-build-system/sbcl)
      (arguments
       '(#:phases
@@ -50,7 +53,7 @@
       (list sbcl-alexandria
             sbcl-fiveam))
      (inputs ;; build dependencies (package)
-      (list tree-sitter
+      (list (latest-tree-sitter tree-sitter)
             sbcl-cffi
             sbcl-trivial-garbage))
      (home-page "https://github.com/garlic0x1/cl-treesitter")
@@ -62,6 +65,7 @@
 (define-public cl-treesitter
   (sbcl-package->cl-source-package sbcl-cl-treesitter))
 
+sbcl-cl-treesitter
 
 ;; (define-public sbcl-cl+ssl
 ;;   (let ((commit "17d5cdd65405f1d26e26f3e875e70027d0c8eedb")
