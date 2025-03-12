@@ -129,6 +129,9 @@
    libnotify
    pipewire
    wireplumber
+   alsa-lib
+   alsa-utils
+   alsa-plugins
    bluez
    bluez-alsa
    brightnessctl
@@ -202,6 +205,7 @@
    ;; See: https://guix.gnu.org/manual/en/html_node/Desktop-Services.html
    (service bluetooth-service-type
             (bluetooth-configuration
+             (bluez bluez)
              (auto-enable? #t)))
 
    (service cups-service-type

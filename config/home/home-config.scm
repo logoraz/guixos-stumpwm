@@ -9,6 +9,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
+  #:use-module (config packages treesitter)
   #:use-module (config home services environment)
   #:use-module (config home services home-impure-symlinks)
   #:use-module (config home services xdg-files)
@@ -26,12 +27,11 @@
  lisp lisp-xyz lisp-check maths wm
  freedesktop kde-frameworks
  ssh cups suckless networking package-management
- commencement base tree-sitter)
+ commencement base)
 
 
 ;;; Package & Transformations
 ;;; https://guix.gnu.org/manual/en/html_node/Defining-Package-Variants.html
-
 
 ;;; Packages
 (define %guile-packages
@@ -46,7 +46,7 @@
    ;; clasp (!!)
 
    ;; Dev Tools for CFFI stuff
-   tree-sitter
+   cl-treesitter
    gcc-toolchain
    binutils
    (specification->package "make")
@@ -72,6 +72,7 @@
    cl-alexandria
    cl-serapeum
    cl-trivial-types
+   cl-cffi
    cl-closer-mop
    cl-bordeaux-threads ;; duplicate (for dev purposes)
    cl-lparallel
