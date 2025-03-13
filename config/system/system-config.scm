@@ -245,7 +245,7 @@
 
    (initrd microcode-initrd)
    ;; Fixes Xorg Lag - https://gitlab.com/nonguix/nonguix/-/issues/212
-   (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
+   ;; (kernel-arguments (cons "i915.enable_psr=0" %default-kernel-arguments))
 
    (bootloader %guixos-bootloader)
 

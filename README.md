@@ -48,8 +48,11 @@ GuixOS [Cr]ystallized [Mo]mentum has be successfully installed/trialed on the fo
           |- tbd
        |- system/                            ;; GuixOS Config Root
           |- system-config.scm               ;; ** GuixOS StumpWM System Config **
-          |- system-config-locutus.scm
           |- channels.scm
+          |- core/                           ;; WIP (enhancement #2)
+             |- base.scm
+             |- heizenberg.scm
+             |- locutus.scm
     |- files/                                ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
        |- assets/...
        |- common-lisp/...
@@ -80,6 +83,7 @@ GuixOS [Cr]ystallized [Mo]mentum has be successfully installed/trialed on the fo
              |- wip-swm-nmctl/
        |- xorg/...
        |- zathura/...
+       |- flatpak/...                        ;; WIP (enhancement #?)
 ```
 
 
@@ -199,14 +203,60 @@ You can start it up in a shell (and get a ugly warning message) once in
 your sway session - I usually don't and things still work, but with out
 notifications...
 
+## Flatpak's
+
+I am currently using flatpaks for web browser applications due to Guix's lack
+of good available browsers (e.g. Zen or Nyxt-Electron)... Most of what can be
+handled here by Guix is depolyed in `home-config.scm`, however, there are a few
+aspects that are not handled such as app installation and data persistence.
+
+Currently just noting down how I install flatpaks on Guix and what apps I use,
+note to always use the `--user` flag where possible when using flatpak on Guix:
+
+```bash
+    # Initial setup of flatpak
+    flatpak --user remote-add --if-not-exists flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    # Install Flatseal tool (first and foremost)
+    flatpak --user install flathub com.github.tchx84.Flatseal
+
+    # Install Nyxt-Electron (pre-release) browser (experimental browser)
+    flatpak --user install <path/to/nyxt-electron-4.0.0-pre-release-3.flatpak>
+    
+    # Install Zen browser (reliable browser)
+    flatpak --user install flathub app.zen_browser.zen
+``` 
+
+Note Flatpak's 'vanilla' installation on Guix is scaffold as follows:
+
+```bash
+    ~/.local/share/flatpak
+    |- db/
+```
+
+### Work-arounds (currently implemented)
+ - Need to symlink, via `mutable-files.scm`, `icons` for desired cursor/icons
+   to two places `$HOME/.icons` and to `$XDG_DATA_HOME/icons`
+ - Add `$XDG_DATA_HOME/flatpak/exports/share:`to `environment.scm`
+   don't need to add `/var/lib/flatpak/exports/share` there for Guix (AFAIK)
+
+### Wish List (TODO's)
+ - Provide flatpaks visibility to system/home profile fonts
+ - Configure Nyxt to communicate to external applications, i.e. KeePassXC or
+   password-store
+ - Remove necessity to use Flatseal...
+
+
 ## TODOs (Wish List)
 
  - Setup StumpWM config as it's own Common Lisp System [partially complete]
  - Configure StumpWM to handle multiple displays via xrandr
- - Implement `notify` & `globalwindows` contrib modules (update)
+ - Configure `notify` & `globalwindows` contrib modules (update)
  - Complete/Create contrib modules for Bluetooth, Brightness and Network Management
  - Create base system config to apply to machine-specific configurations
  - Minimize/Reduce dependency on 'mutable-files` & `xdg-files`
+ - Seemless integration with flatpak (with some reproducibility)
  - Implement/Use bcacefs for file systems
 
    

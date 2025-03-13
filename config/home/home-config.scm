@@ -9,7 +9,7 @@
   #:use-module (gnu home services dotfiles)
   #:use-module (guix gexp)
   #:use-module (guix transformations)
-  #:use-module (config packages treesitter)
+  #:use-module (config packages cl-treesitter)
   #:use-module (config home services environment)
   #:use-module (config home services home-impure-symlinks)
   #:use-module (config home services xdg-files)
@@ -46,10 +46,11 @@
    ;; clasp (!!)
 
    ;; Dev Tools for CFFI stuff
-   cl-treesitter
    gcc-toolchain
    binutils
    (specification->package "make")
+   tree-sitter ;; 0.25.3
+   ;; cl-treesitter
 
    ;; CL Foundation
    maxima
@@ -92,8 +93,6 @@
    flatpak-xdg-utils
    xdg-desktop-portal
    xdg-desktop-portal-gtk
-   xdg-desktop-portal-kde
-   xdg-desktop-portal-gnome
    xdg-utils
    xdg-dbus-proxy
    shared-mime-info
@@ -117,7 +116,6 @@
 
    ;; Browsers & Tools
    ;; Using flatpak -> https://flathub.org/oc/setup/GNU%20Guix
-   ;; (latest-nyxt nyxt)
    enchant
 
    ;; Editors/IDE's
