@@ -49,7 +49,7 @@ GuixOS [Cr]ystallized [Mo]mentum has be successfully installed/trialed on the fo
        |- system/                            ;; GuixOS Config Root
           |- system-config.scm               ;; ** GuixOS StumpWM System Config **
           |- channels.scm
-          |- core/                           ;; WIP (enhancement #2)
+          |- core/                           ;; WIP (Issue/Enhancement #2)
              |- base.scm
              |- heizenberg.scm
              |- locutus.scm

@@ -40,8 +40,8 @@
                        (lt:format-timestring
                         nil
                         (lt:now)
-                        :format '(:year "-" :month "-" :day "-T"
-                                  :hour "-" :min   "-" :sec)))
+                        :format '(:year "" :month "" :day "T"
+                                  :hour "" :min   "" :sec)))
                ".png"))
 
 ;;TODO - Refactor the below code...
