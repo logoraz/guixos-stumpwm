@@ -18,7 +18,7 @@
 
 (defpackage #:swm-brightness
   (:use #:cl 
-        #:stumpwm)
+        :stumpwm)
   (:local-nicknames (#:re #:ppcre))
   (:export #:*command*
            #:*step*))
