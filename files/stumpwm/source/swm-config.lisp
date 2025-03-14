@@ -49,27 +49,23 @@
 (defvar *trackpadp* nil
   "Hold boolean state of trackpad.")
 
-;; WIP [Issue# 1]
-;; Determine a way to dynamically find prop id as it seems to change when
-;; devices are added, specifically wifi devices...
-(defun format-output (value)
-  "Format output string VALUE to remove superflous content."
-  (let* ((regexp "\\((.*?)\\)") ;; captures (#%), etc
-         (filter "[^()]+") ;; Filters captured string to remove parentheses.
-         (match (re:scan-to-strings regexp value))
+;;Note: Similar fn pattern used in swm-brightness & swm-bluetooth.
+(defun format-output (value regexp filter)
+  "Format VALUE according to REGEXP & FILTER using ppcre to return desired content."
+  (let* ((match (re:scan-to-strings regexp value))
          (content (re:scan-to-strings filter match)))
     content))
 
 (defun get-trackpad-id ()
-  "Dynamically retriev trackpad id from xinput"
-  (format-output
-   (run-shell-command "xinput")))
+  "Dynamically retrieve trackpad id from xinput"
+  (format-output (run-shell-command "xinput" t)
+                 "(.*(?:SynPS/2).*)" ;; matches/captures line w/ SynPS/2 identifier
+                 "([0-9]{2})")) ;; Extract 2 digit number (after id=##)
 
-(defvar *trackpad-command* "xinput set-prop 12 185"
+(defvar *trackpad-command* (concat "xinput set-prop "
+                                   (get-trackpad-id) " "
+                                   "185")
   "Set xinput set-prop specifics to Enable/Disable trackpad...")
-
-;;
-;; END WIP
 
 (defun set-trackpad-state (&optional (state "0"))
   "Enable/Disable trackpad."
