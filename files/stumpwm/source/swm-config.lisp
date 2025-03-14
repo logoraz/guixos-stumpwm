@@ -59,6 +59,7 @@
 (defun get-trackpad-id ()
   "Dynamically retrieve trackpad id from xinput"
   (format-output (run-shell-command "xinput" t)
+                 ;; Specific to Lenovo laptops, need to set regexp accordingly...
                  "(.*(?:SynPS/2).*)" ;; matches/captures line w/ SynPS/2 identifier
                  "([0-9]{2})")) ;; Extract 2 digit number (after id=##)
 
