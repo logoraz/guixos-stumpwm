@@ -49,8 +49,8 @@ GuixOS [Cr]ystallized [Mo]mentum has be successfully installed/trialed on the fo
        |- system/                            ;; GuixOS Config Root
           |- system-config.scm               ;; ** GuixOS StumpWM System Config **
           |- channels.scm
-          |- core/                           ;; WIP (Issue/Enhancement #2)
-             |- base.scm
+          |- core/
+             |- base-system.scm
              |- heizenberg.scm
              |- locutus.scm
     |- files/                                ;; XDG_CONFIG_HOME Files (=> xdg-files.scm)
@@ -116,10 +116,12 @@ preconfigured with items that ease the pain of installation and the
 instructions are excellent, see:
 https://systemcrafters.net/craft-your-system-with-guix/full-system-install/
 
-Next, download this project repo and edit the GuixOS configuration module
-with your machine and user specific information, i.e. `swap-devices`,
-`file-systems`, `user-account`, and `%user-name`. Note: See
-"Establishing WiFi" section on a refresher for connecting to wifi via nmcli.
+Next, download this project repo and clone one of the `system/core` configuration
+modules adding your machine and user specific information, i.e. 
+`swap-devices`, `file-systems`, `user-account`, and `user-name`. Then in the
+main `system-config` simply inherit one of the machine-specific core configs.
+
+Note: See "Establishing WiFi" section on a refresher for connecting to wifi via nmcli.
 
 You probably won't have git installed, hence the `guix shell` command.
 
@@ -129,8 +131,13 @@ You probably won't have git installed, hence the `guix shell` command.
     $ git clone https://github.com/logoraz/guixos-stumpwm.git ~/dotfiles
     $ cd ~/dotfiles
     
-    # Edit GuixOS configuration module
-    $ emacs ./config/system/system-config.scm
+    # Copy GuixOS configuration module & Edit accordingly:
+    $ cd ./config/system/core/
+    $ cp heizenberg.scm <your-system-name>.scm
+    $ emacs <your-system-name>.scm
+    
+    # Next edit `system-config` to inherit <your-system-name>
+    $ cd ../ && emacs system-config.scm
 
 ```
 
@@ -138,12 +145,13 @@ Also, you will need to edit the following Home modules with your specific
 information:
 
   - `/.config/home/services/xdg-files.scm` => `%user-name`
+  - `/.config/home/services/mutable-files.scm` => `%user-name`
   - `/.config/home/services/environment.scm` => `%user-name`
   - [`./config/home/home-config.scm` => `home-bash-configuration`] 
     - Optional if you choose a different root project directory name...
 
 Note: I am currently working to generalize this to define machine and user
-specific variables in one place...
+specific variables in one place... (issue #?)
 
 Now we are ready to install GuixOS StumpWM ("Crystallized Momentum"), enter
 the following command when logged into your initial WM (my case EXWM) using
