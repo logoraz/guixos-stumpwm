@@ -28,8 +28,8 @@
     ("LC_COLLATE" . "C")
 
     ;; Set Default editor
-    ("EDITOR" . "emacs")
-    ("VISUAL" . "emacs")
+    ("EDITOR" . "lem")
+    ("VISUAL" . "lem")
 
     ;; Set the default browser
     ("BROWSER" . "nyxt")
