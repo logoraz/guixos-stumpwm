@@ -34,6 +34,7 @@
 ;; https://systemcrafters.net/live-streams/december-3-2021/
 ;; https://github.com/aartaka/stumpwm-config
 
+;; Helper Functions
 (defun update-keymap (keymap bindings)
   "Helper function to update desired StumpWM KEYMAP with BINDINGS."
   (loop :for (binding command) :in bindings
