@@ -8,6 +8,7 @@
   #:use-module (nongnu packages linux)
   #:use-module (nongnu system linux-initrd)
   #:use-module (config packages stumpwm)
+  ;; #:use-module (config packages clasp)
 
   #:export (guixos-user-name
             guixos-keyboard-layout
@@ -16,6 +17,8 @@
             guixos-file-systems
             guixos-groups
             guixos-users
+            %dev-base-packages
+            %cl-base-packages
             %stumpwm-base-packages
             %guixos-base-system-packages
             %guixos-base-packages
@@ -23,15 +26,15 @@
             %guixos-base-services
             %guixos-base-system))
 
-(use-system-modules
- keyboard nss)
+(use-system-modules keyboard)
 
 ;;TODO: cleanup/organize
 (use-package-modules
- ssh cups suckless fonts wm lisp lisp-xyz
- file-systems linux audio version-control
- wget curl compression xorg xdisorg
- compton image-viewers gnome)
+ ssh cups suckless fonts file-systems
+ wm lisp lisp-xyz xorg xdisorg gnome
+ linux audio version-control
+ wget curl compression compton image-viewers 
+ commencement base build-tools)
 
 (use-service-modules
  cups ssh desktop xorg
@@ -98,6 +101,20 @@
 ;; (define latest-sbcl
 ;;   (options->transformation
 ;;    '((with-latest . "sbcl"))))
+
+(define %dev-base-packages
+  (list
+   gcc-toolchain
+   binutils
+   (specification->package "make")
+   meson))
+
+(define %cl-base-packages
+  (list 
+   ;;clasp
+   sbcl
+   ecl
+   ccl))
 
 (define %stumpwm-base-packages
 ;; TODO: Organize and sort out modules/depencies...
@@ -178,7 +195,9 @@
    font-awesome))
 
 (define %guixos-base-packages
-  (append %stumpwm-base-packages
+  (append %dev-base-packages
+          %cl-base-packages
+          %stumpwm-base-packages
           %guixos-base-system-packages
           %base-packages))
 
@@ -272,12 +291,4 @@
    ;; Use 'guix search KEYWORD' to search for packages.
    (packages %guixos-base-packages)
 
-   (services %guixos-base-services)
-
-   ;; Allow resolution of '.local' host names with mDNS.
-   (name-service-switch %mdns-host-lookup-nss)))
-
-;; TODO: Fix warning
-;; guix system: warning: multiple 'nss-certs' packages found; 'nss-certs' is now included by
-;; default in '%base-packages'; ensure it is not explicitly listed in the operating system
-;; 'packages' field
+   (services %guixos-base-services)))

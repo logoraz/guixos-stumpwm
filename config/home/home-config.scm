@@ -22,12 +22,11 @@
  fonts web-browsers password-utils gnupg mail
  gstreamer video linux music
  gnucash gimp inkscape graphics image gnome gnome-xyz
- guile guile-xyz emacs emacs-xyz sdl text-editors
+ guile guile-xyz emacs emacs-xyz sdl ncurses text-editors
  shellutils pdf glib enchant pulseaudio
  lisp lisp-xyz lisp-check maths wm
  freedesktop kde-frameworks
- ssh cups suckless networking package-management
- commencement base)
+ ssh cups suckless networking package-management)
 
 
 ;;; Package & Transformations
@@ -41,16 +40,9 @@
 
 (define %cl-packages
   (list
-   ecl
-   ccl
-   ;; clasp (!!)
-
-   ;; Dev Tools for CFFI stuff
-   gcc-toolchain
-   binutils
-   (specification->package "make")
+   ;; CL Dev Tools
    tree-sitter ;; 0.25.3
-   ;; cl-treesitter
+   ;; cl-treesitter ;; builds - but at runtime errors on ro shim.so
 
    ;; CL Foundation
    maxima
@@ -83,6 +75,11 @@
   (list
    ;; Addn StumpWM Utilities
 
+   ;; Editors/IDE's
+   lem
+   sdl2
+   ncurses
+
    ;; Mail
    mu
    isync
@@ -100,12 +97,10 @@
 
    ;; Appearance
    matcha-theme
+   qogir-icon-theme
    papirus-icon-theme
    adwaita-icon-theme
-   breeze-icons ;; for KDE apps
-   gnome-themes-extra
    bibata-cursor-theme
-   gsettings-desktop-schemas
 
    ;; Fonts
    font-fira-code
@@ -117,10 +112,6 @@
    ;; Browsers & Tools
    ;; Using flatpak -> https://flathub.org/oc/setup/GNU%20Guix
    enchant
-
-   ;; Editors/IDE's
-   lem
-   sdl2
 
    ;; Authentication/Encryption
    gnupg
