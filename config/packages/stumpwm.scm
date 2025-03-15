@@ -18,7 +18,7 @@
 (define-public stumpwm-dev
   (package
    (name "stumpwm")
-   (version "019e44a110fff6d600802901c30d5be7a16da8d0")
+   (version "2e8ee0a5cab2846a848facbe71c9e3a1f0ab153a")
    (source
     (origin
      (method git-fetch)
@@ -28,7 +28,7 @@
      (file-name (git-file-name "stumpwm" version))
      (hash
       (content-hash
-       "0ja8njc88rffn2y164335sqcjlxrhc382yj3ykhdwn6my7v58c1b"))))
+       "1kisn2aj2p03rfinrwkaaf7phjl3cs6yjgwab59css62vfccv932"))))
    (build-system asdf-build-system/sbcl)
    (native-inputs
     (list sbcl-fiasco
