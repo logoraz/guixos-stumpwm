@@ -39,6 +39,13 @@
   (loop :for (binding command) :in bindings
         :do (define-key keymap (kbd binding) command)))
 
+(defun create-keymap (bindings)
+  "Helper function to create desired StumpWM KEYMAP with BINDINGS.
+BINDINGS is an alis '(('binding' 'command')...)"
+  (let ((key-map (make-sparse-keymap)))
+    (update-keymap! key-map bindings)
+    key-map))
+
 (defvar *kbds-top-map* 
   `(;; Audio/Mic Controls
     ("XF86AudioRaiseVolume" "wpctl-volume-up")
@@ -98,19 +105,18 @@
 (setf *root-map*                     (make-sparse-keymap)
       stumpwm::*group-root-map*      (make-sparse-keymap)
       stumpwm::*tile-group-root-map* (make-sparse-keymap))
-
 (update-keymap *top-map*  *kbds-top-map*)
 (update-keymap *root-map* *kbds-root-map*)
 
 
 ;;; Applications
-(defvar *my-applications-keymap*
+(defvar *applications-keymap*
   (let ((key-map (make-sparse-keymap)))
-    (define-key key-map (kbd "e") "exec emacs")
     (define-key key-map (kbd "l") "exec lem")
+    (define-key key-map (kbd "e") "exec emacs")
     (define-key key-map (kbd "x") "exec ~/.config/xorg/start-xterm.sh")
-    (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt-Electron")
     (define-key key-map (kbd "b") "exec flatpak run app.zen_browser.zen")
+    (define-key key-map (kbd "n") "exec flatpak run engineer.atlas.Nyxt-Electron")
     (define-key key-map (kbd "f") "exec flatpak run com.github.tchx84.Flatseal")
     (define-key key-map (kbd "k") "exec keepassxc")
     (define-key key-map (kbd "c") "exec gnucash")
@@ -120,25 +126,25 @@
     (define-key key-map (kbd "o") "exec obs")
     (define-key key-map (kbd "z") "exec zathura")
     key-map))
-(define-key *root-map* (kbd "a") '*my-applications-keymap*)
+(define-key *root-map* (kbd "a") '*applications-keymap*)
 
 ;;; Custom X11 System Controls
-(defvar *my-xorg-keymap*
+(defvar *xorg-keymap*
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "t") "toggle-trackpad")
     key-map))
-(define-key *root-map* (kbd "C-t") '*my-xorg-keymap*)
+(define-key *root-map* (kbd "C-t") '*xorg-keymap*)
 
 
 ;;; Screenshots
-(defvar *my-screenshot-keymap*
+(defvar *screenshot-keymap*
   (let ((key-map (make-sparse-keymap)))
     (define-key key-map (kbd "s") "screenshot")
     (define-key key-map (kbd "w") "screenshot-window")
     (define-key key-map (kbd "a") "screenshot-area")
     key-map))
-(define-key *root-map* (kbd "V") '*my-screenshot-keymap*)
-(define-key *top-map* (kbd "Print") '*my-screenshot-keymap*)
+(define-key *root-map* (kbd "V") '*screenshot-keymap*)
+(define-key *top-map* (kbd "Print") '*screenshot-keymap*)
 
 
 ;;; Session Controls (swm-end-session)
