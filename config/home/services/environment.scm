@@ -9,7 +9,7 @@
 ;; Edit setting the Home User
 (define %user-name "logoraz")
 
-(define %gtk2-rc ".guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
+(define %gtk2-rc "$HOME/.guix-home/profile/share/themes/Adwaita-dark/gtk-2.0/gtkrc")
 
 
 (define %xdg-data-dirs (string-append "$HOME/.guix-home/profile/share:"
@@ -38,9 +38,10 @@
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
 
     ;; GTK & Xorg
-    ("GTK_THEME"     . "Adwaita:dark")
+    ("GTK_THEME"     . "Matcha")
     ("XCURSOR_THEME" . "XCursor-Pro-Dark")
     ("XCURSOR_SIZE"  . "16")
+    ;; ("GTK2_RC_FILES" . ,%gtk2-rc)
 
     ;; Set XDG environment variables
     ("XDG_SESSION_TYPE"    . "x11")

@@ -12,7 +12,7 @@
 (define *home-path* "/home/logoraz/dotfiles/")
 
 (define (home-mutable-files-gexp-service config)
-  `(;; guix Configuration Scaffolding
+  `(;; Guix Configuration Scaffolding
     (".config/guix/channels.scm"
      ,(string-append
        *home-path*
@@ -67,15 +67,17 @@
        *home-path*
        "files/xorg/mimeapps.list"))
 
-    (".config/gtk-3.0/settings.ini"
-     ,(string-append
-       *home-path*
-       "files/xorg/settings.ini"))
-
     (".config/xorg/start-xterm.sh"
      ,(string-append
        *home-path*
        "files/xorg/start-xterm.sh"))
+
+    ;; GTK Configuration Scaffolding
+    ;; TODO: move to xdg-files.scm once established.
+    (".config/gtk-3.0/settings.ini"
+     ,(string-append
+       *home-path*
+       "files/xorg/settings.ini"))
 
     ;; Redundant... to .icons above -> needed for zen browser (flatpak)
     (".local/share/icons"
