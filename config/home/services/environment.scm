@@ -38,7 +38,7 @@
     ("GNUPGHOME" . "$XDG_CONFIG_HOME/gnupg")
 
     ;; GTK & Xorg
-    ("GTK_THEME"     . "Matcha")
+    ("GTK_THEME"     . "Adwaita:dark")
     ("XCURSOR_THEME" . "XCursor-Pro-Dark")
     ("XCURSOR_SIZE"  . "16")
     ;; ("GTK2_RC_FILES" . ,%gtk2-rc)
